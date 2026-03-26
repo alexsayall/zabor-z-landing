@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Коммерческое предложение — Забор Z</title>
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a2a3a;
+    --navy-light: #253545;
+    --bronze: #c8956c;
+    --bronze-light: #e0b896;
+    --orange: #e85d26;
+    --green: #22c55e;
+    --red: #dc2626;
+    --bg: #ffffff;
+    --bg-warm: #faf8f5;
+    --bg-card: #f8f6f3;
+    --text: #2d3748;
+    --text-light: #718096;
+    --text-lighter: #a0aec0;
+    --border: #e2e8f0;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+    background: #e8e8e8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== PAGE CONTAINER (A4 simulation) ===== */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 16px auto;
+    background: #fff;
+    padding: 24mm 22mm 20mm;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+    position: relative;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* ===== EDITABLE FIELDS ===== */
+  .editable {
+    border: none;
+    border-bottom: 1.5px dashed var(--bronze-light);
+    background: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    padding: 1px 4px;
+    outline: none;
+    min-width: 60px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .editable:focus {
+    border-bottom-color: var(--bronze);
+    background: #fffaf5;
+  }
+  .editable-wide { width: 180px; }
+  .editable-num { width: 70px; text-align: right; }
+  .editable-price { width: 100px; text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* Hover hint for manager */
+  @media screen {
+    .editable:hover { background: #fffbf0; cursor: text; }
+    .manager-hint {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      background: var(--navy);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-size: 12px;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      max-width: 240px;
+      line-height: 1.5;
+    }
+    .manager-hint strong { color: var(--bronze); }
+    .no-print { display: block; }
+  }
+
+  /* ===== HEADER (every page) ===== */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--navy);
+  }
+  .logo-block {}
+  .logo-text {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--navy);
+    letter-spacing: 3px;
+    margin-bottom: 2px;
+  }
+  .logo-text span { color: var(--bronze); }
+  .logo-sub {
+    font-size: 9px;
+    color: var(--text-light);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .header-contacts {
+    text-align: right;
+    font-size: 11px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+  .header-contacts strong { color: var(--navy); font-size: 14px; }
+  .header-contacts a { color: var(--text-light); text-decoration: none; }
+
+  /* ===== KP META (page 1) ===== */
+  .kp-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+    background: var(--bg-warm);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+  }
+  .kp-meta-group {}
+  .kp-meta-group .label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-light);
+    margin-bottom: 3px;
+  }
+  .kp-meta-group .value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  /* ===== SECTION TITLES ===== */
+  h2 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--navy);
+    margin: 28px 0 14px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--bronze);
+    display: inline-block;
+  }
+  h3 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 16px 0 8px;
+  }
+
+  /* ===== MODEL INFO CARD ===== */
+  .model-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .model-card-header {
+    background: var(--navy);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .model-card-header h3 {
+    color: #fff;
+    margin: 0;
+    font-size: 16px;
+    border: none;
+  }
+  .model-card-header .tag {
+    background: var(--bronze);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.5px;
+  }
+  .model-card-body {
+    padding: 18px 20px;
+    background: var(--bg-warm);
+  }
+  .model-specs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .spec-item {
+    text-align: center;
+    padding: 10px;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .spec-item .spec-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-light);
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  .spec-item .spec-value {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--navy);
+  }
+
+  /* ===== ESTIMATE TABLE ===== */
+  .estimate-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 6px;
+    font-size: 12px;
+  }
+  .estimate-table thead th {
+    background: var(--navy);
+    color: #fff;
+    padding: 10px 12px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    border: 1px solid var(--navy-light);
+  }
+  .estimate-table thead th:first-child { text-align: left; }
+  .estimate-table thead th:nth-child(2) { width: 55px; }
+  .estimate-table thead th:nth-child(3) { width: 55px; }
+  .estimate-table thead th:nth-child(4) { width: 90px; }
+  .estimate-table thead th:nth-child(5) { width: 100px; }
+
+  .estimate-table tbody td {
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .estimate-table tbody td:first-child { font-weight: 500; }
+  .estimate-table tbody td:nth-child(2),
+  .estimate-table tbody td:nth-child(3) { text-align: center; }
+  .estimate-table tbody td:nth-child(4),
+  .estimate-table tbody td:nth-child(5) { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .estimate-table tbody tr:nth-child(even) td { background: var(--bg-warm); }
+  .estimate-table tbody tr:hover td { background: #fff8f0; }
+
+  .estimate-table .section-row td {
+    background: var(--bg-card) !important;
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 12px;
+  }
+
+  .estimate-table tfoot td {
+    padding: 12px;
+    border: 1px solid var(--navy);
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--navy);
+  }
+  .estimate-table tfoot td:last-child {
+    text-align: right;
+    font-size: 16px;
+  }
+  .estimate-table tfoot .subtotal td {
+    background: var(--bg-card);
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .estimate-table tfoot .grand-total td {
+    background: var(--navy);
+    color: #fff;
+    font-size: 15px;
+  }
+  .estimate-table tfoot .grand-total td:last-child {
+    color: var(--bronze);
+    font-size: 18px;
+    font-weight: 900;
+  }
+
+  /* ===== DISCOUNT / URGENCY BLOCK ===== */
+  .discount-block {
+    border: 2.5px solid var(--orange);
+    border-radius: 10px;
+    padding: 0;
+    margin: 24px 0;
+    overflow: hidden;
+  }
+  .discount-header {
+    background: var(--orange);
+    color: #fff;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .discount-body {
+    padding: 20px;
+    background: #fff8f5;
+  }
+  .discount-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(232,93,38,0.15);
+  }
+  .discount-row:last-child { border-bottom: none; }
+  .discount-row .dr-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .discount-row .dr-value {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--orange);
+  }
+  .discount-row .dr-value.big {
+    font-size: 22px;
+    color: var(--navy);
+  }
+  .discount-row .dr-value del {
+    color: var(--text-lighter);
+    font-weight: 400;
+    font-size: 13px;
+    margin-right: 8px;
+  }
+  .discount-deadline {
+    text-align: center;
+    padding: 14px;
+    background: var(--navy);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .discount-deadline strong {
+    color: var(--orange);
+    font-size: 14px;
+  }
+
+  /* ===== CREWS COUNTER ===== */
+  .crews-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: var(--navy);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin: 16px 0;
+  }
+  .crews-strip .crews-num {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .crews-strip .crews-of {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+  .crews-strip .crews-text {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    max-width: 240px;
+    line-height: 1.5;
+  }
+
+  /* ===== ADVANTAGES MINI ===== */
+  .adv-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 14px 0;
+  }
+  .adv-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 12px;
+    background: var(--bg-warm);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .adv-item .adv-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    line-height: 1.3;
+  }
+  .adv-item .adv-text {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+  .adv-item .adv-text strong { color: var(--navy); display: block; font-size: 12px; }
+
+  /* ===== GUARANTEE ROW ===== */
+  .guarantee-row {
+    display: flex;
+    gap: 16px;
+    margin: 14px 0;
+  }
+  .guarantee-item {
+    flex: 1;
+    text-align: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 10px;
+  }
+  .guarantee-item .g-num {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--bronze);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .guarantee-item .g-label {
+    font-size: 10px;
+    color: var(--text-light);
+    line-height: 1.3;
+  }
+
+  /* ===== SHOWROOM MINI ===== */
+  .showroom-mini {
+    display: flex;
+    gap: 16px;
+    align-items: stretch;
+    margin: 14px 0;
+    padding: 16px;
+    background: var(--bg-warm);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .showroom-mini .showroom-photos-mini {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    flex: 1;
+  }
+  .showroom-mini .showroom-photo-mini {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: var(--text-lighter);
+    text-align: center;
+  }
+  .showroom-mini .showroom-info {
+    flex: 1;
+    font-size: 11px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+  .showroom-mini .showroom-info strong {
+    color: var(--navy);
+    display: block;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  /* ===== COLOR SWATCHES MINI ===== */
+  .swatches-mini {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+  }
+  .swatch-mini {
+    text-align: center;
+  }
+  .swatch-mini-color {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    margin-bottom: 3px;
+    position: relative;
+    overflow: hidden;
+  }
+  .swatch-mini-color .tex {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(0,0,0,0.04) 4px, rgba(0,0,0,0.04) 5px);
+  }
+  .swatch-mini-label {
+    font-size: 8px;
+    color: var(--text-light);
+    font-weight: 600;
+  }
+
+  /* ===== CTA FOOTER ===== */
+  .cta-footer {
+    background: var(--navy);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .cta-footer .cta-left h3 {
+    color: #fff;
+    font-size: 14px;
+    margin: 0 0 4px;
+  }
+  .cta-footer .cta-left p {
+    color: rgba(255,255,255,0.5);
+    font-size: 11px;
+    margin: 0;
+  }
+  .cta-footer .cta-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .cta-footer .cta-item {
+    text-align: center;
+  }
+  .cta-footer .cta-item .ci-label {
+    font-size: 9px;
+    color: var(--bronze);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+  .cta-footer .cta-item .ci-value {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .cta-footer .cta-item .ci-value a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  /* Telegram link */
+  .tg-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #2AABEE;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 8px;
+  }
+  .tg-link svg { width: 14px; height: 14px; }
+
+  /* ===== FOOTER ===== */
+  .page-footer {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 9px;
+    color: var(--text-lighter);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* ===== WHAT'S INCLUDED ===== */
+  .included-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin: 10px 0;
+  }
+  .included-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    padding: 5px 0;
+  }
+  .included-item .check {
+    color: var(--green);
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* ===== CHEAPER MINI ===== */
+  .cheaper-mini {
+    background: var(--bg-warm);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--bronze);
+    border-radius: 0 6px 6px 0;
+    padding: 14px 16px;
+    margin: 14px 0;
+  }
+  .cheaper-mini h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .cheaper-mini p {
+    font-size: 11px;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ===== PRINT STYLES ===== */
+  @media print {
+    body { background: #fff; }
+    .page {
+      width: auto;
+      margin: 0;
+      padding: 18mm 18mm 14mm;
+      box-shadow: none;
+      min-height: auto;
+    }
+    .manager-hint, .no-print { display: none !important; }
+    .editable { border-bottom-color: transparent; }
+    .editable:empty { border-bottom-color: var(--border); }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  }
+
+  @media screen and (max-width: 700px) {
+    .page { width: auto; padding: 16px; margin: 8px; }
+    .model-specs { grid-template-columns: repeat(2, 1fr); }
+    .adv-grid { grid-template-columns: 1fr; }
+    .guarantee-row { flex-direction: column; }
+    .cta-footer { flex-direction: column; text-align: center; }
+    .cta-footer .cta-right { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Manager hint (visible only on screen) -->
+<div class="manager-hint no-print">
+  <strong>Подсказка для менеджера:</strong><br>
+  Все подчёркнутые поля — редактируемые. Заполните данные клиента, модель, количество. Затем <strong>Ctrl+P → Сохранить как PDF</strong>.
+</div>
+
+<!-- ======================================= -->
+<!-- ========== СТРАНИЦА 1: СМЕТА ========== -->
+<!-- ======================================= -->
+<div class="page">
+
+  <!-- Header -->
+  <div class="page-header">
+    <div class="logo-block">
+      <div class="logo-text">ZABOR<span>Z</span></div>
+      <div class="logo-sub">Заборы жалюзи под ключ</div>
+    </div>
+    <div class="header-contacts">
+      <strong>+7 (900) 123-45-67</strong><br>
+      <a href="https://zabor-z.ru">zabor-z.ru</a> | info@zabor-z.ru
+    </div>
+  </div>
+
+  <!-- KP Meta -->
+  <div class="kp-meta">
+    <div class="kp-meta-group">
+      <div class="label">Коммерческое предложение #</div>
+      <div class="value"><input class="editable" value="Z-0001" style="font-size:14px;font-weight:700;"></div>
+    </div>
+    <div class="kp-meta-group">
+      <div class="label">Дата</div>
+      <div class="value"><input class="editable" value="12.03.2026" style="font-size:14px;font-weight:700;"></div>
+    </div>
+    <div class="kp-meta-group">
+      <div class="label">Клиент</div>
+      <div class="value"><input class="editable editable-wide" placeholder="Имя клиента" style="font-size:14px;font-weight:700;"></div>
+    </div>
+    <div class="kp-meta-group">
+      <div class="label">Ваш менеджер</div>
+      <div class="value"><input class="editable editable-wide" placeholder="Имя менеджера" style="font-size:14px;font-weight:700;"></div>
+    </div>
+  </div>
+
+  <!-- Model Card -->
+  <div class="model-card">
+    <div class="model-card-header">
+      <h3>Забор Z <input class="editable" value="КЛАССИК" style="color:#fff;font-size:16px;font-weight:800;width:120px;border-bottom-color:rgba(255,255,255,0.3);"></h3>
+      <div class="tag">Ваша модель</div>
+    </div>
+    <div class="model-card-body">
+      <div class="model-specs">
+        <div class="spec-item">
+          <div class="spec-label">Ламель</div>
+          <div class="spec-value"><input class="editable" value="120 мм" style="text-align:center;font-weight:800;font-size:13px;width:80px;"></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Сталь</div>
+          <div class="spec-value"><input class="editable" value="0.5 мм" style="text-align:center;font-weight:800;font-size:13px;width:70px;"></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Покрытие</div>
+          <div class="spec-value"><input class="editable" value="Полиэстер 25 мкм (двуст.)" style="text-align:center;font-weight:700;font-size:11px;width:170px;"></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Столб</div>
+          <div class="spec-value"><input class="editable" value="80x80 мм, 2 мм" style="text-align:center;font-weight:800;font-size:13px;width:120px;"></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Высота</div>
+          <div class="spec-value"><input class="editable" value="2.0 м" style="text-align:center;font-weight:800;font-size:13px;width:60px;"></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Цвет</div>
+          <div class="spec-value"><input class="editable" value="RAL 7024 (графит)" style="text-align:center;font-weight:700;font-size:11px;width:130px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESTIMATE TABLE -->
+  <h2>Смета — только для вас</h2>
+
+  <table class="estimate-table" id="estimateTable">
+    <thead>
+      <tr>
+        <th>Наименование</th>
+        <th>Ед.</th>
+        <th>Кол-во</th>
+        <th>Цена за ед.</th>
+        <th>Сумма</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- SECTION: Materials -->
+      <tr class="section-row"><td colspan="5">Материалы</td></tr>
+      <tr>
+        <td>Ламели жалюзи Z <input class="editable" value="Классик" style="width:70px;font-size:11px;"> 120 мм</td>
+        <td>п.м.</td>
+        <td><input class="editable editable-num" value="100" oninput="recalcRow(this)"></td>
+        <td><input class="editable editable-price" value="1 560" oninput="recalcRow(this)"></td>
+        <td class="row-total">156 000 &#8381;</td>
+      </tr>
+      <tr>
+        <td>Столбы 80x80 мм с заглушками</td>
+        <td>шт.</td>
+        <td><input class="editable editable-num" value="40" oninput="recalcRow(this)"></td>
+        <td><input class="editable editable-price" value="2 800" oninput="recalcRow(this)"></td>
+        <td class="row-total">112 000 &#8381;</td>
+      </tr>
+      <tr>
+        <td>Направляющие (поперечные лаги)</td>
+        <td>п.м.</td>
+        <td><input class="editable editable-num" value="200" oninput="recalcRow(this)"></td>
+        <td><input class="editable editable-price" value="280" oninput="recalcRow(this)"></td>
+        <td class="row-total">56 000 &#8381;</td>
+      </tr>
+      <tr>
+        <td>Крепёж, метизы, комплектующие</td>
+        <td>компл.</td>
+        <td><input class="editable editable-num" value="1" oninput="recalcRow(this)"></td>
+        <td><input class="editable editable-price" value="12 000" oninput="recalcRow(this)"></td>
+        <td class="row-total">12 000 &#8381;</td>
+      </tr>
+
+      <!-- SECTION: Gates / Wicket -->
+      <tr class="section-row"><td colspan="5">Ворота и калитка</td></tr>
+      <tr>
+        <td>Откатные ворота 4 м (материалы + автоматика)</td>
+        <td>шт.</td>
+        <td><input class="editable editable-num" value="1" oninput="recalcRow(this)"></td>
+        <td><input class="editable editable-price" value="95 000" oninput="recalcRow(this)"></td>
+        <td class="row-total">95 000 &#8381;</td>
+      </tr>
+      <tr>
+        <td>Калитка 1 м (материалы)</td>
+        <td>шт.</td>
+        <td><input class="editable editable-num" value="1" oninput="recalcRow(this)"></td>
+        <td><input class="editable editable-price" value="22 000" oninput="recalcRow(this)"></td>
+        <td class="row-total">22 000 &#8381;</td>
+      </tr>
+
+      <!-- SECTION: Works -->
+      <tr class="section-row"><td colspan="5">Работы</td></tr>
+      <tr>
+        <td>Разметка и бурение отверстий</td>
+        <td>шт.</td>
+        <td><input class="editable editable-num" value="40" oninput="recalcRow(this)"></td>
+        <td><input class="editable editable-price" value="800" oninput="recalcRow(this)"></td>
+        <td class="row-total">32 000 &#8381;</td>
+      </tr>
+      <tr>
+        <td>Бетонирование столбов (марка М300)</td>
+        <td>шт.</td>
+        <td><input class="editable editable-num" value="40" oninput="recalcRow(this)"></td>
+        <td><input class="editable editable-price" value="1 200" oninput="recalcRow(this)"></td>
+        <td class="row-total">48 000 &#8381;</td>
+      </tr>
+      <tr>
+        <td>Монтаж секций забора</td>
+        <td>п.м.</td>
+        <td><input class="editable editable-num" value="100" oninput="recalcRow(this)"></td>
+        <td><input class="editable editable-price" value="450" oninput="recalcRow(this)"></td>
+        <td class="row-total">45 000 &#8381;</td>
+      </tr>
+      <tr>
+        <td>Монтаж ворот и калитки</td>
+        <td>компл.</td>
+        <td><input class="editable editable-num" value="1" oninput="recalcRow(this)"></td>
+        <td><input class="editable editable-price" value="18 000" oninput="recalcRow(this)"></td>
+        <td class="row-total">18 000 &#8381;</td>
+      </tr>
+
+      <!-- SECTION: Delivery -->
+      <tr class="section-row"><td colspan="5">Логистика</td></tr>
+      <tr>
+        <td>Доставка материалов до участка</td>
+        <td>рейс</td>
+        <td><input class="editable editable-num" value="1" oninput="recalcRow(this)"></td>
+        <td><input class="editable editable-price" value="12 000" oninput="recalcRow(this)"></td>
+        <td class="row-total">12 000 &#8381;</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr class="subtotal">
+        <td colspan="4">Итого материалы:</td>
+        <td id="subtotal-materials" style="text-align:right;">—</td>
+      </tr>
+      <tr class="subtotal">
+        <td colspan="4">Итого работы:</td>
+        <td id="subtotal-works" style="text-align:right;">—</td>
+      </tr>
+      <tr class="grand-total">
+        <td colspan="4" style="font-size:14px;">ИТОГО ПОД КЛЮЧ:</td>
+        <td id="grand-total" style="text-align:right;">—</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <p style="font-size:9px;color:var(--text-lighter);margin-top:4px;">* Точная стоимость фиксируется в договоре после выезда замерщика. Данный расчёт является ориентировочным.</p>
+
+  <!-- Page footer -->
+  <div class="page-footer">
+    Забор Z | zabor-z.ru | +7 (900) 123-45-67 | Москва и МО
+  </div>
+</div>
+
+
+<!-- ============================================ -->
+<!-- ========== СТРАНИЦА 2: ОФФЕР + ИНФО ======== -->
+<!-- ============================================ -->
+<div class="page">
+
+  <!-- Header -->
+  <div class="page-header">
+    <div class="logo-block">
+      <div class="logo-text">ZABOR<span>Z</span></div>
+      <div class="logo-sub">Заборы жалюзи под ключ</div>
+    </div>
+    <div class="header-contacts">
+      <strong>+7 (900) 123-45-67</strong><br>
+      <a href="https://zabor-z.ru">zabor-z.ru</a> | info@zabor-z.ru
+    </div>
+  </div>
+
+  <!-- DISCOUNT / URGENCY BLOCK -->
+  <div class="discount-block">
+    <div class="discount-header">
+      &#128293; Специальное предложение для вас
+    </div>
+    <div class="discount-body">
+      <div class="discount-row">
+        <div class="dr-label">Стоимость по смете:</div>
+        <div class="dr-value" id="discount-original">—</div>
+      </div>
+      <div class="discount-row">
+        <div class="dr-label">Ваша скидка при оплате в течение 14 дней:</div>
+        <div class="dr-value"><input class="editable" value="5" style="width:30px;text-align:center;font-weight:800;color:var(--orange);">%</div>
+      </div>
+      <div class="discount-row" style="border-bottom:none;">
+        <div class="dr-label" style="font-size:15px;font-weight:800;">Ваша цена:</div>
+        <div class="dr-value big" id="discount-final">
+          <del id="discount-strikethrough">—</del>
+          <span id="discount-price">—</span>
+        </div>
+      </div>
+    </div>
+    <div class="discount-deadline">
+      Предложение действительно до <strong><input class="editable" value="26.03.2026" style="color:var(--orange);font-weight:800;text-align:center;width:90px;border-bottom-color:rgba(255,255,255,0.3);"></strong> — не упустите фиксированную цену!
+    </div>
+  </div>
+
+  <!-- Crews counter -->
+  <div class="crews-strip">
+    <div>
+      <div class="crews-num"><input class="editable" value="3" style="color:var(--orange);font-size:32px;font-weight:900;width:30px;text-align:center;border-bottom-color:rgba(255,255,255,0.2);"></div>
+      <div class="crews-of">из 8</div>
+    </div>
+    <div class="crews-text">
+      Свободных бригад на ближайший месяц. В прошлом сезоне бригады были загружены уже к апрелю. Бронируйте заранее.
+    </div>
+  </div>
+
+  <!-- What's included -->
+  <h2>Что входит в стоимость</h2>
+  <div class="included-grid">
+    <div class="included-item"><span class="check">&#10003;</span> Бесплатный выезд замерщика</div>
+    <div class="included-item"><span class="check">&#10003;</span> Индивидуальный проект + 3D</div>
+    <div class="included-item"><span class="check">&#10003;</span> Все материалы с доставкой</div>
+    <div class="included-item"><span class="check">&#10003;</span> Бурение и бетонирование</div>
+    <div class="included-item"><span class="check">&#10003;</span> Профессиональный монтаж</div>
+    <div class="included-item"><span class="check">&#10003;</span> Уборка территории</div>
+    <div class="included-item"><span class="check">&#10003;</span> Совместная приёмка по чек-листу</div>
+    <div class="included-item"><span class="check">&#10003;</span> Гарантия 3 года</div>
+  </div>
+
+  <!-- Guarantees -->
+  <h2>Гарантии</h2>
+  <div class="guarantee-row">
+    <div class="guarantee-item">
+      <div class="g-num">3 года</div>
+      <div class="g-label">гарантия<br>на монтаж</div>
+    </div>
+    <div class="guarantee-item">
+      <div class="g-num">10 лет</div>
+      <div class="g-label">гарантия<br>на покрытие</div>
+    </div>
+    <div class="guarantee-item">
+      <div class="g-num">25+ лет</div>
+      <div class="g-label">срок службы<br>забора</div>
+    </div>
+    <div class="guarantee-item">
+      <div class="g-num">100%</div>
+      <div class="g-label">фиксированная<br>цена в договоре</div>
+    </div>
+  </div>
+
+  <!-- Advantages -->
+  <h2>Наши преимущества</h2>
+  <div class="adv-grid">
+    <div class="adv-item">
+      <div class="adv-icon">&#9889;</div>
+      <div class="adv-text"><strong>Лазерная резка</strong>Идеальная геометрия каждой ламели. Нет заусенцев — безопасно для детей.</div>
+    </div>
+    <div class="adv-item">
+      <div class="adv-icon">&#128737;</div>
+      <div class="adv-text"><strong>Безопасная конструкция</strong>Обработанные края, скрытый крепёж, заглушки на столбах.</div>
+    </div>
+    <div class="adv-item">
+      <div class="adv-icon">&#127919;</div>
+      <div class="adv-text"><strong>Один подрядчик</strong>Отвечаем за всё — от проекта до приёмки. Никакого «завод винит бригаду».</div>
+    </div>
+    <div class="adv-item">
+      <div class="adv-icon">&#128190;</div>
+      <div class="adv-text"><strong>3D-визуализация</strong>Увидите забор на фоне вашего дома ДО подписания договора.</div>
+    </div>
+  </div>
+
+  <!-- Cheaper block -->
+  <div class="cheaper-mini">
+    <h4>Нашли дешевле?</h4>
+    <p>Покажите предложение — мы объясним разницу. За низкой ценой часто скрываются: тонкий металл (0.35 мм вместо 0.5 мм), одностороннее покрытие, слабые столбы, отсутствие бетонирования или скрытые доплаты на доставку и монтаж.</p>
+  </div>
+
+  <!-- Showroom compact -->
+  <h2>Шоурум — посмотрите вживую</h2>
+  <div class="showroom-mini">
+    <div class="showroom-photos-mini">
+      <div class="showroom-photo-mini">Фото 1</div>
+      <div class="showroom-photo-mini">Фото 2</div>
+      <div class="showroom-photo-mini">Фото 3</div>
+      <div class="showroom-photo-mini">Фото 4</div>
+    </div>
+    <div class="showroom-info">
+      <strong>Приезжайте — потрогайте образцы!</strong>
+      Все модели и цвета представлены в нашем шоуруме. Приезжайте сравнить и определиться. Бесплатная парковка.<br><br>
+      <strong>Адрес:</strong> <input class="editable" value="Москва, ул. Примерная, д. 1" style="width:200px;font-size:11px;"><br>
+      <strong>Время:</strong> Пн-Вс, 9:00 — 21:00
+    </div>
+  </div>
+
+  <!-- Выкрасы / цвета -->
+  <h2>Популярные цвета</h2>
+  <div class="swatches-mini">
+    <div class="swatch-mini">
+      <div class="swatch-mini-color" style="background:#3b2a1a;"><div class="tex"></div></div>
+      <div class="swatch-mini-label">RAL 8017</div>
+    </div>
+    <div class="swatch-mini">
+      <div class="swatch-mini-color" style="background:#1a1a1a;"><div class="tex"></div></div>
+      <div class="swatch-mini-label">RAL 9005</div>
+    </div>
+    <div class="swatch-mini">
+      <div class="swatch-mini-color" style="background:#4a4a4a;"><div class="tex"></div></div>
+      <div class="swatch-mini-label">RAL 7024</div>
+    </div>
+    <div class="swatch-mini">
+      <div class="swatch-mini-color" style="background:#2d5a3e;"><div class="tex"></div></div>
+      <div class="swatch-mini-label">RAL 6005</div>
+    </div>
+    <div class="swatch-mini">
+      <div class="swatch-mini-color" style="background:#5c3d2e;"><div class="tex"></div></div>
+      <div class="swatch-mini-label">RAL 8019</div>
+    </div>
+    <div class="swatch-mini">
+      <div class="swatch-mini-color" style="background:linear-gradient(180deg,#c19a6b,#8b6f4e);"><div class="tex"></div></div>
+      <div class="swatch-mini-label">Gold Oak</div>
+    </div>
+    <div class="swatch-mini">
+      <div class="swatch-mini-color" style="background:linear-gradient(180deg,#5c4033,#2b1a0f);"><div class="tex"></div></div>
+      <div class="swatch-mini-label">Dark Oak</div>
+    </div>
+    <div class="swatch-mini">
+      <div class="swatch-mini-color" style="background:linear-gradient(180deg,#b0a090,#6a5a4a);"><div class="tex"></div></div>
+      <div class="swatch-mini-label">Stone Grey</div>
+    </div>
+  </div>
+  <p style="font-size:9px;color:var(--text-lighter);">Образцы всех цветов привезём на замер бесплатно. Для моделей Классик — 200+ цветов RAL. Премиум — Printech текстуры.</p>
+
+  <!-- CTA Footer -->
+  <div class="cta-footer">
+    <div class="cta-left">
+      <h3>Готовы обсудить?</h3>
+      <p>Позвоните или напишите — ответим за 15 минут</p>
+      <a href="https://t.me/zabor_z" class="tg-link" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161l-1.97 9.293c-.145.658-.537.818-1.084.508l-3-2.211-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.93z"/></svg>
+        Telegram-канал
+      </a>
+    </div>
+    <div class="cta-right">
+      <div class="cta-item">
+        <div class="ci-label">Телефон</div>
+        <div class="ci-value"><a href="tel:+79001234567">+7 (900) 123-45-67</a></div>
+      </div>
+      <div class="cta-item">
+        <div class="ci-label">WhatsApp</div>
+        <div class="ci-value"><a href="https://wa.me/79001234567">+7 (900) 123-45-67</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page footer -->
+  <div class="page-footer">
+    &copy; 2026 Забор Z. Все права защищены. Настоящее предложение не является публичной офертой.<br>
+    Москва и Московская область | Пн-Вс 9:00—21:00
+  </div>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+function parseNum(str) {
+  if (!str) return 0;
+  return parseFloat(String(str).replace(/[^\d.,]/g, '').replace(',', '.')) || 0;
+}
+
+function formatNum(n) {
+  return Math.round(n).toLocaleString('ru-RU');
+}
+
+function recalcRow(input) {
+  var tr = input.closest('tr');
+  if (!tr) return;
+  var inputs = tr.querySelectorAll('input.editable');
+  if (inputs.length < 2) return;
+
+  var qty = parseNum(inputs[inputs.length - 2].value);
+  var price = parseNum(inputs[inputs.length - 1].value);
+  var total = qty * price;
+
+  var totalCell = tr.querySelector('.row-total');
+  if (totalCell) {
+    totalCell.textContent = formatNum(total) + ' \u20BD';
+  }
+
+  recalcTotals();
+}
+
+function recalcTotals() {
+  var table = document.getElementById('estimateTable');
+  var rows = table.querySelectorAll('tbody tr');
+
+  var materialsTotal = 0;
+  var worksTotal = 0;
+  var currentSection = '';
+
+  rows.forEach(function(row) {
+    if (row.classList.contains('section-row')) {
+      var sectionText = row.textContent.trim().toLowerCase();
+      if (sectionText.indexOf('материал') !== -1 || sectionText.indexOf('ворота') !== -1) {
+        currentSection = 'materials';
+      } else {
+        currentSection = 'works';
+      }
+      return;
+    }
+
+    var totalCell = row.querySelector('.row-total');
+    if (!totalCell) return;
+    var val = parseNum(totalCell.textContent);
+
+    if (currentSection === 'materials') {
+      materialsTotal += val;
+    } else {
+      worksTotal += val;
+    }
+  });
+
+  var grandTotal = materialsTotal + worksTotal;
+
+  document.getElementById('subtotal-materials').textContent = formatNum(materialsTotal) + ' \u20BD';
+  document.getElementById('subtotal-works').textContent = formatNum(worksTotal) + ' \u20BD';
+  document.getElementById('grand-total').textContent = formatNum(grandTotal) + ' \u20BD';
+
+  // Update discount block
+  document.getElementById('discount-original').textContent = formatNum(grandTotal) + ' \u20BD';
+  document.getElementById('discount-strikethrough').textContent = formatNum(grandTotal) + ' \u20BD';
+
+  // Calculate discount (find the % input in the discount block)
+  var discountInputs = document.querySelectorAll('.discount-body input.editable');
+  var discountPct = 5;
+  discountInputs.forEach(function(inp) {
+    var v = parseNum(inp.value);
+    if (v > 0 && v <= 50) discountPct = v;
+  });
+
+  var discountedTotal = grandTotal * (1 - discountPct / 100);
+  document.getElementById('discount-price').textContent = formatNum(discountedTotal) + ' \u20BD';
+}
+
+// Attach listener to discount % input
+document.querySelectorAll('.discount-body input.editable').forEach(function(inp) {
+  inp.addEventListener('input', recalcTotals);
+});
+
+// Initial calculation
+recalcTotals();
+</script>
+
+</body>
+</html>
