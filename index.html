@@ -1,1 +1,1297 @@
-﻿<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta http-equiv="refresh" content="0; url=catalog-zabor-z.html"><title>Zabor Z</title></head><body><p><a href="catalog-zabor-z.html">Catalog</a></p></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Каталог заборов — Забор Z | Модели от эконом до премиум</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--dark:#0f1923;--dark2:#162033;--bronze:#c8956c;--bronze-l:#e8c4a0;--gold:#D4AF37;--orange:#e85d26;--orange-h:#ff7040;--light:#faf8f5;--white:#fff;--text:#2d3748;--muted:#718096;--r:16px;--shadow:0 20px 60px rgba(0,0,0,.08)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:130px}
+body{font-family:'Montserrat',sans-serif;color:var(--text);background:var(--light);line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:16px 0;transition:all .4s}
+.header::before{content:'';position:absolute;inset:0;background:rgba(15,25,35,.9);backdrop-filter:blur(20px);opacity:0;transition:opacity .4s}
+.header.scrolled::before{opacity:1}
+.header.scrolled{padding:10px 0;box-shadow:0 4px 30px rgba(0,0,0,.15)}
+.header .container{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:26px;font-weight:900;color:var(--white);letter-spacing:2px}
+.logo span{color:var(--bronze)}
+.nav{display:flex;align-items:center;gap:28px}
+.nav a{color:rgba(255,255,255,.75);font-size:13px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;transition:color .3s}
+.nav a:hover{color:var(--bronze)}
+.header-phone{color:var(--white);font-weight:700;font-size:15px}
+.header-phone:hover{color:var(--bronze)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;z-index:1001;background:none;border:none}
+.burger span{display:block;width:24px;height:2px;background:var(--white);transition:all .3s}
+.burger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.burger.active span:nth-child(2){opacity:0}
+.burger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-nav{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:var(--dark);padding:80px 32px 32px;z-index:999;transition:right .4s;display:flex;flex-direction:column;gap:20px}
+.mobile-nav.active{right:0}
+.mobile-nav a{color:rgba(255,255,255,.8);font-size:18px;font-weight:500;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);transition:color .3s}
+.mobile-nav a:hover{color:var(--bronze)}
+.mobile-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:998;opacity:0;pointer-events:none;transition:opacity .3s}
+.mobile-overlay.active{opacity:1;pointer-events:all}
+
+/* HERO */
+.hero{background:var(--dark);padding:130px 0 70px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40%;right:-15%;width:50%;height:180%;background:radial-gradient(circle,rgba(200,149,108,.06) 0%,transparent 60%);pointer-events:none}
+.hero-content{text-align:center;position:relative;z-index:1;max-width:800px;margin:0 auto}
+.hero-badge{display:inline-block;background:rgba(200,149,108,.12);color:var(--bronze);font-size:12px;font-weight:600;padding:8px 20px;border-radius:30px;margin-bottom:20px;letter-spacing:1.5px;text-transform:uppercase}
+.hero h1{font-size:clamp(26px,4.5vw,46px);font-weight:800;color:var(--white);line-height:1.2;margin-bottom:18px}
+.hero h1 em{font-style:normal;color:var(--bronze)}
+.hero-sub{color:rgba(255,255,255,.55);font-size:clamp(14px,1.8vw,17px);max-width:580px;margin:0 auto 40px}
+
+/* Price Scale */
+.price-scale{max-width:720px;margin:0 auto;padding:0 16px}
+.price-scale-title{text-align:center;color:rgba(255,255,255,.35);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;margin-bottom:20px}
+.pst-short{display:none}
+.price-bar{height:6px;border-radius:3px;background:linear-gradient(90deg,rgba(200,149,108,.25),var(--bronze),var(--gold));position:relative}
+.price-dot{position:absolute;top:50%;width:14px;height:14px;border-radius:50%;border:3px solid var(--white);transform:translate(-50%,-50%);cursor:pointer;transition:all .3s;z-index:2}
+.price-dot:hover{transform:translate(-50%,-50%) scale(1.4);z-index:3}
+.price-dot .tip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);background:var(--white);color:var(--text);font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.price-dot .tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--white)}
+.price-dot:hover .tip{opacity:1}
+.price-labels{display:flex;justify-content:space-between;margin-top:10px;font-size:13px;color:rgba(255,255,255,.45);font-weight:500}
+.price-labels b{color:var(--white);font-weight:700}
+
+/* FILTERS */
+.filter-wrap{background:var(--light);padding:16px 0;position:sticky;top:56px;z-index:99;border-bottom:1px solid rgba(0,0,0,.06)}
+.filter-tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.filter-tab{padding:10px 22px;border-radius:30px;font-size:13px;font-weight:600;cursor:pointer;border:2px solid transparent;background:var(--white);color:var(--muted);transition:all .3s;font-family:inherit}
+.filter-tab:hover{border-color:var(--bronze-l);color:var(--text)}
+.filter-tab.active{background:var(--dark);color:var(--white);border-color:var(--dark)}
+.filter-tab .cnt{font-size:10px;font-weight:700;padding:2px 6px;border-radius:8px;background:rgba(200,149,108,.2);color:var(--bronze);margin-left:5px}
+.filter-tab.active .cnt{background:rgba(255,255,255,.15);color:rgba(255,255,255,.8)}
+
+/* ========== MODEL SECTIONS ========== */
+.model-section{padding:70px 0 50px;transition:opacity .4s}
+.model-section:nth-child(odd){background:var(--white)}
+.model-section:nth-child(even){background:var(--light)}
+.model-section.filtered-out{display:none}
+.model-layout{display:grid;grid-template-columns:55% 1fr;gap:0 44px;align-items:start}
+.model-layout .model-left{grid-column:1;grid-row:1/3}
+.model-layout .model-info-top{grid-column:2;grid-row:1}
+.model-layout .model-info-bottom{grid-column:2;grid-row:2}
+
+/* Left: sticky carousel */
+.model-left{position:sticky;top:140px}
+.model-carousel{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:0 16px 60px rgba(0,0,0,.1);background:#e8e3dd;aspect-ratio:5/3}
+.model-carousel .track{display:flex;transition:transform .45s ease;position:absolute;inset:0}
+.model-carousel .slide{min-width:100%;flex-shrink:0;position:relative;overflow:hidden}
+.model-carousel .slide svg{width:100%;position:absolute;top:50%;left:0;transform:translateY(-50%)}
+.model-carousel .slide img{width:100%;height:100%;display:block;object-fit:cover;position:absolute;top:0;left:0}
+.mcr-btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.92);border:none;cursor:pointer;font-size:18px;z-index:3;transition:all .3s;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.12);color:var(--text)}
+.mcr-btn:hover{background:var(--white);box-shadow:0 4px 20px rgba(0,0,0,.18)}
+.mcr-prev{left:14px}
+.mcr-next{right:14px}
+.mcr-dots{display:flex;gap:7px;justify-content:center;padding:14px 0 0}
+.mcr-dot{width:8px;height:8px;border-radius:50%;background:rgba(0,0,0,.12);cursor:pointer;transition:all .3s;border:none}
+.mcr-dot.active{background:var(--bronze);width:22px;border-radius:4px}
+
+/* Drawing small card */
+.drawing-mini{margin-top:14px;display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:10px;border:1px solid rgba(0,0,0,.08);background:var(--light);cursor:zoom-in;transition:all .3s}
+.drawing-mini:hover{border-color:var(--bronze);background:rgba(200,149,108,.06)}
+.drawing-mini svg{width:50px;height:38px;border-radius:4px;flex-shrink:0}
+.drawing-mini span{font-size:12px;font-weight:600;color:var(--bronze)}
+
+/* Right: info (split for mobile reorder) */
+.model-info-top{}
+.model-info-bottom{}
+.model-badge{display:inline-block;padding:5px 14px;border-radius:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.badge-hit{background:var(--orange);color:var(--white)}
+.badge-prem{background:linear-gradient(135deg,var(--bronze),var(--gold));color:var(--white)}
+.badge-new{background:#2563eb;color:var(--white)}
+.model-name{font-size:clamp(24px,3vw,34px);font-weight:800;color:var(--dark);margin-bottom:4px}
+.model-type-label{font-size:13px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+.model-price{font-size:clamp(26px,3vw,36px);font-weight:800;color:var(--bronze);margin-bottom:6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.model-price small{font-size:11px;font-weight:500;color:var(--muted);line-height:1.3}
+
+/* Value scale (mini) */
+.value-scale{display:flex;align-items:center;gap:8px;margin:14px 0 20px}
+.vs-label{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+.vs-bar{flex:1;height:5px;border-radius:3px;background:rgba(200,149,108,.15);overflow:hidden}
+.vs-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--bronze-l),var(--bronze),var(--gold));transition:width .8s ease}
+
+/* Description */
+.model-desc-short{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:6px}
+.desc-toggle{background:none;border:none;color:var(--bronze);font-size:13px;font-weight:600;cursor:pointer;padding:0;margin-bottom:18px;font-family:inherit}
+.desc-toggle:hover{text-decoration:underline}
+.model-desc-full{display:none;font-size:14px;color:var(--text);line-height:1.8;margin-bottom:18px;padding:16px;background:rgba(200,149,108,.04);border-radius:10px;border:1px solid rgba(200,149,108,.12)}
+
+/* ========== SPECS (quality bars) ========== */
+.specs-block{margin-top:16px}
+.specs-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
+.spec-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.spec-icon{font-size:14px;width:20px;text-align:center;flex-shrink:0}
+.spec-label{font-size:12px;font-weight:600;color:var(--text);width:155px;flex-shrink:0}
+.spec-bar{flex:1;height:7px;border-radius:4px;background:rgba(200,149,108,.1);overflow:hidden}
+.spec-fill{height:100%;border-radius:4px;width:0;background:linear-gradient(90deg,var(--bronze-l),var(--bronze),var(--gold));transition:width 1.2s cubic-bezier(.25,.46,.45,.94)}
+.spec-row.animated .spec-fill{width:var(--val)}
+.spec-val{font-size:12px;font-weight:700;color:var(--bronze);width:60px;text-align:right;flex-shrink:0}
+
+/* Tags */
+.tags-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.mtag{padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;background:rgba(200,149,108,.08);color:var(--bronze)}
+.mtag.steel{background:rgba(22,32,51,.06);color:var(--dark2)}
+
+/* ========== "PROCHEE" (OTHER) SECTION ========== */
+.other-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px}
+.other-card{border-radius:var(--r);overflow:hidden;background:var(--white);box-shadow:0 8px 30px rgba(0,0,0,.06);transition:all .3s}
+.other-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.1)}
+.other-card svg{width:100%;display:block}
+.other-card-label{padding:14px 16px;font-size:14px;font-weight:600;color:var(--dark);text-align:center}
+.other-cta{text-align:center;margin-top:32px;padding:28px;background:rgba(200,149,108,.06);border-radius:var(--r);border:1px solid rgba(200,149,108,.15)}
+.other-cta h3{font-size:20px;font-weight:700;color:var(--dark);margin-bottom:8px}
+.other-cta p{font-size:14px;color:var(--muted);max-width:500px;margin:0 auto}
+
+/* ========== SECTION HEADERS ========== */
+.sec-header{text-align:center;margin-bottom:44px}
+.sec-header h2{font-size:clamp(24px,3.5vw,36px);font-weight:800;color:var(--dark);margin-bottom:10px}
+.sec-header p{color:var(--muted);font-size:15px;max-width:500px;margin:0 auto}
+
+/* ========== PAINT ========== */
+.paint-section{padding:80px 0;background:var(--light)}
+.paint-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:48px}
+.paint-card{background:var(--white);border-radius:var(--r);padding:24px;box-shadow:var(--shadow);transition:all .3s;display:flex;flex-direction:column}
+.paint-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,.1)}
+.paint-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:24px}
+.paint-card h3{font-size:15px;font-weight:700;margin-bottom:6px}
+.paint-card p{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:10px}
+.paint-pros{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.paint-pros span{font-size:10px;font-weight:600;padding:3px 8px;border-radius:5px;background:rgba(200,149,108,.08);color:var(--bronze)}
+.paint-photo-btn{display:inline-flex;align-items:center;gap:5px;background:var(--bronze);border:none;color:var(--white);font-family:inherit;font-size:12px;font-weight:600;padding:8px 16px;border-radius:8px;cursor:pointer;transition:all .3s;margin-top:auto}
+.paint-photo-btn:hover{background:var(--dark)}
+/* palette */
+.palette-header{text-align:center;margin-bottom:20px}
+.palette-header h3{font-size:20px;font-weight:700;margin-bottom:6px}
+.palette-header p{font-size:13px;color:var(--muted)}
+.color-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;max-width:500px;margin:0 auto}
+.color-sw{aspect-ratio:1;border-radius:10px;cursor:pointer;position:relative;transition:all .3s;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.color-sw:hover{transform:scale(1.12);box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.color-sw .swtip{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--dark);color:var(--white);font-size:10px;font-weight:600;padding:4px 8px;border-radius:5px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s}
+.color-sw:hover .swtip{opacity:1}
+.palette-note{text-align:center;color:var(--muted);font-size:13px;margin-top:14px}
+
+/* CTA */
+.cta-section{padding:80px 0;background:var(--dark);position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;bottom:-30%;left:-10%;width:50%;height:160%;background:radial-gradient(circle,rgba(200,149,108,.06) 0%,transparent 60%);pointer-events:none}
+.cta-content{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.cta-text h2{font-size:clamp(22px,3vw,34px);font-weight:800;color:var(--white);line-height:1.3;margin-bottom:14px}
+.cta-text h2 em{font-style:normal;color:var(--bronze)}
+.cta-text p{color:rgba(255,255,255,.55);font-size:15px;margin-bottom:24px}
+.cta-phone{font-size:26px;font-weight:800;color:var(--white);display:block;margin-bottom:14px;transition:color .3s}
+.cta-phone:hover{color:var(--bronze)}
+.tg-btn{display:inline-flex;align-items:center;gap:10px;background:#0088cc;color:var(--white);padding:14px 26px;border-radius:12px;font-weight:700;font-size:15px;transition:all .3s}
+.tg-btn:hover{background:#006daa;transform:translateY(-2px)}
+.cta-bonuses{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.cta-bonus{padding:7px 13px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:11px;font-weight:500;color:rgba(255,255,255,.65)}
+.cta-info{margin-top:20px;display:flex;flex-direction:column;gap:8px}
+.cta-info span{color:rgba(255,255,255,.55);font-size:13px}
+
+/* FOOTER */
+.footer{background:#0a0f16;padding:48px 0 24px}
+.footer-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;margin-bottom:28px}
+.footer-logo{font-size:22px;font-weight:900;color:var(--white);margin-bottom:8px}
+.footer-logo span{color:var(--bronze)}
+.footer-desc{font-size:12px;color:rgba(255,255,255,.35);line-height:1.6}
+.footer h4{font-size:13px;font-weight:700;color:var(--white);margin-bottom:14px;text-transform:uppercase;letter-spacing:.5px}
+.footer a{display:block;color:rgba(255,255,255,.4);font-size:13px;padding:3px 0;transition:color .3s}
+.footer a:hover{color:var(--bronze)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:18px;text-align:center;font-size:11px;color:rgba(255,255,255,.25)}
+
+.float-tg{position:fixed;bottom:28px;right:28px;width:58px;height:58px;border-radius:50%;background:#0088cc;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(0,136,204,.4);z-index:900;transition:all .3s;cursor:pointer}
+.float-tg:hover{transform:scale(1.1)}
+.float-tg svg{width:28px;height:28px;fill:var(--white)}
+
+/* LIGHTBOX — fullscreen viewer */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.lightbox.active{opacity:1;pointer-events:all}
+.lb-content{position:relative;width:90%;max-width:900px;max-height:90vh;display:flex;flex-direction:column;align-items:center}
+.lb-close{position:fixed;top:16px;right:16px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.15);border:none;cursor:pointer;font-size:24px;color:#fff;display:flex;align-items:center;justify-content:center;transition:all .3s;z-index:2001}
+.lb-close:hover{background:rgba(255,255,255,.3)}
+.lb-body{width:100%;display:flex;align-items:center;justify-content:center}
+.lb-body svg{width:100%;height:auto;border-radius:8px}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.15);border:none;cursor:pointer;font-size:22px;color:#fff;display:flex;align-items:center;justify-content:center;transition:all .3s;z-index:3}
+.lb-nav:hover{background:rgba(255,255,255,.3)}
+.lb-nav.lb-prev{left:-64px}
+.lb-nav.lb-next{right:-64px}
+.lb-counter{text-align:center;font-size:13px;color:rgba(255,255,255,.5);font-weight:600;margin-top:14px}
+@media(max-width:1024px){
+  .lb-nav.lb-prev{left:10px}
+  .lb-nav.lb-next{right:10px}
+  .lb-nav{background:rgba(255,255,255,.2)}
+}
+@media(max-width:768px){
+  .lb-content{width:96%}
+  .lb-nav{width:38px;height:38px;font-size:17px}
+  .lb-close{top:10px;right:10px;width:38px;height:38px;font-size:20px}
+}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(25px);transition:all .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .model-layout{display:flex;flex-direction:column;gap:20px}
+  .model-info-top{order:-1}
+  .model-left{order:0;position:static;width:100%}
+  .model-info-bottom{order:1}
+  .paint-grid{grid-template-columns:repeat(2,1fr)}
+  .cta-content{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .other-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .nav,.header-phone{display:none}
+  .burger{display:flex}
+  .model-section{padding:28px 0;margin:10px 12px;border-radius:16px;border:1px solid rgba(0,0,0,.06);box-shadow:0 4px 20px rgba(0,0,0,.05)}
+  .model-section:nth-child(even){background:rgba(200,149,108,.02)}
+  .paint-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr;gap:20px}
+  .color-grid{grid-template-columns:repeat(4,1fr)}
+  .hero{padding:110px 0 50px}
+  .paint-section,.cta-section{padding:60px 0}
+  .spec-label{width:115px;font-size:11px}
+  .other-grid{grid-template-columns:1fr}
+  /* Filters: horizontal scroll */
+  .filter-tabs{display:flex !important;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;justify-content:flex-start;gap:8px}
+  .filter-tabs::-webkit-scrollbar{display:none}
+  .filter-tab{flex-shrink:0;white-space:nowrap}
+  /* Price scale: no dots on mobile, shorter title */
+  .price-dot{display:none !important}
+  .price-scale-title{font-size:9px;letter-spacing:1.5px;margin-bottom:14px}
+  .pst-full{display:none}
+  .pst-short{display:inline}
+  /* Hide decorative ::before artifacts on mobile */
+  .hero::before{display:none}
+  .cta-section::before{display:none}
+}
+@media(max-width:480px){
+  .color-grid{grid-template-columns:repeat(3,1fr)}
+  .cta-bonuses{flex-direction:column}
+  .spec-row{gap:6px}
+}
+
+/* ========== QUICK NAV ========== */
+.quick-nav{background:var(--white);padding:20px 0 12px;border-bottom:1px solid rgba(0,0,0,.06)}
+.qn-title{text-align:center;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+.qn-wrap{display:flex;align-items:center;gap:8px}
+.qn-arrow{width:36px;height:36px;border-radius:50%;background:var(--white);border:1.5px solid rgba(0,0,0,.1);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s;font-size:16px;color:var(--text);font-family:inherit}
+.qn-arrow:hover{border-color:var(--bronze);color:var(--bronze);box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.qn-scroll{display:flex;gap:8px;overflow-x:auto;padding:0 0 8px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;flex:1}
+.qn-scroll::-webkit-scrollbar{height:4px}
+.qn-scroll::-webkit-scrollbar-thumb{background:rgba(200,149,108,.3);border-radius:2px}
+.qn-card{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;padding:12px 14px;border-radius:12px;border:1.5px solid rgba(0,0,0,.06);background:var(--light);cursor:pointer;transition:all .25s;text-decoration:none;width:125px;position:relative}
+.qn-card:hover{border-color:var(--bronze);background:rgba(200,149,108,.04);transform:translateY(-2px)}
+.qn-card .qn-icon{width:100px;height:70px;margin-bottom:6px;border-radius:4px;overflow:hidden}
+.qn-card .qn-icon svg{width:100%;height:100%}
+.qn-card .qn-name{font-size:11px;font-weight:700;color:var(--dark);white-space:normal;text-align:center;line-height:1.2;margin-bottom:1px}
+.qn-card .qn-price{font-size:10px;font-weight:600;color:var(--bronze);white-space:nowrap}
+.qn-card .qn-compact{display:none;font-size:9px;font-weight:600;color:var(--dark);text-align:center;line-height:1.3}
+.qn-card .qn-seg{width:6px;height:6px;border-radius:50%;position:absolute;top:6px;right:6px}
+.qn-card .qn-badge{position:absolute;top:4px;left:4px;background:var(--orange);color:var(--white);font-size:7px;font-weight:800;padding:2px 5px;border-radius:3px;letter-spacing:.3px;text-transform:uppercase;line-height:1}
+
+/* ========== BACK TO TOP ========== */
+.back-top{position:fixed;bottom:28px;left:28px;width:48px;height:48px;border-radius:50%;background:var(--dark);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.25);z-index:900;cursor:pointer;opacity:0;pointer-events:none;transition:all .35s;border:none;color:var(--white);font-size:20px}
+.back-top.visible{opacity:1;pointer-events:all}
+.back-top:hover{background:var(--bronze);transform:scale(1.08)}
+.back-top svg{width:20px;height:20px;fill:currentColor}
+
+/* ========== PAINT BACK BUTTON ========== */
+.paint-back{position:fixed;bottom:96px;right:28px;display:flex;align-items:center;gap:8px;background:var(--dark);color:var(--white);padding:12px 20px;border-radius:30px;font-size:13px;font-weight:600;cursor:pointer;z-index:900;opacity:0;pointer-events:none;transition:all .35s;border:none;box-shadow:0 4px 20px rgba(0,0,0,.25);font-family:'Montserrat',sans-serif}
+.paint-back.visible{opacity:1;pointer-events:all}
+.paint-back:hover{background:var(--bronze)}
+
+/* ========== MATERIALS (improved tags) ========== */
+.model-materials{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.mat-group{display:flex;align-items:center;gap:8px}
+.mat-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;min-width:75px;flex-shrink:0}
+.mat-options{display:flex;gap:5px;flex-wrap:wrap}
+.mat-opt{padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;transition:all .2s}
+.mat-opt.steel{background:rgba(22,32,51,.06);color:var(--dark2);border:1px solid rgba(22,32,51,.1)}
+.mat-opt.paint{background:rgba(200,149,108,.08);color:var(--bronze);border:1px solid rgba(200,149,108,.15)}
+.mat-opt:hover{transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+
+/* ========== RESPONSIVE ADDITIONS ========== */
+@media(max-width:768px){
+  .quick-nav{padding:14px 0 8px}
+  .qn-title{font-size:10px;margin-bottom:8px}
+  .qn-card{border-radius:10px}
+  .back-top{bottom:20px;left:16px;width:42px;height:42px;font-size:17px}
+  .float-tg{bottom:20px;right:16px;width:50px;height:50px}
+  .float-tg svg{width:24px;height:24px}
+  .paint-back{bottom:80px;right:16px;padding:10px 16px;font-size:12px}
+  .mat-group{flex-wrap:wrap}
+  .mat-label{min-width:auto;width:100%;margin-bottom:-2px}
+  .mat-opt{padding:5px 11px;font-size:11px;cursor:pointer}
+  /* Quick Nav: hide arrows, fade scroll hint, keep names+prices */
+  .qn-arrow{display:none !important}
+  .qn-wrap{position:relative}
+  .qn-wrap::after{content:'';position:absolute;right:0;top:0;bottom:8px;width:35px;background:linear-gradient(to right,transparent,var(--white));pointer-events:none;z-index:1;border-radius:0 0 12px 0}
+  .qn-card{width:110px;padding:8px 10px}
+  .qn-card .qn-icon{width:88px;height:60px}
+  .qn-card .qn-name{font-size:10px}
+  .qn-card .qn-price{font-size:9px}
+  .qn-card .qn-badge{font-size:6px;padding:1px 4px}
+  /* Filters: fade scroll hint */
+  .filter-wrap .container{position:relative}
+  .filter-wrap .container::after{content:'';position:absolute;right:0;top:0;bottom:0;width:35px;background:linear-gradient(to right,transparent,var(--light));pointer-events:none;z-index:1}
+}
+@media(max-width:480px){
+  .qn-card{width:100px;padding:6px 8px}
+  .qn-card .qn-icon{width:80px;height:54px}
+  .qn-card .qn-name{font-size:9px}
+  .qn-card .qn-price{font-size:8px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+<div class="container">
+<a href="#" class="logo">ЗАБОР <span>Z</span></a>
+<nav class="nav">
+<a href="#catalog">Каталог</a>
+<a href="#paint">Покраска</a>
+<a href="#contacts">Контакты</a>
+</nav>
+<a href="tel:+74999951211" class="header-phone">+7 (499) 995-12-11</a>
+<button class="burger" id="burger"><span></span><span></span><span></span></button>
+</div>
+</header>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-nav" id="mobileNav">
+<a href="#catalog">Каталог</a>
+<a href="#paint">Покраска</a>
+<a href="#contacts">Контакты</a>
+<a href="tel:+74999951211" style="color:var(--bronze);font-weight:700;margin-top:12px">+7 (499) 995-12-11</a>
+<a href="https://t.me/zaborz_sales" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#0088cc;color:#fff;padding:12px 20px;border-radius:10px;font-weight:700;font-size:14px;margin-top:6px;border-bottom:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>Написать в Telegram</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="hero-content">
+<div class="hero-badge">Каталог 2026</div>
+<h1>Модели современных заборов — <em>от эконом до премиума</em></h1>
+<p class="hero-sub">Самый широкий выбор современных заборов - в одном месте. Подберём именно ту модель, которая подойдёт вашему участку, стилю и бюджету.</p>
+<div class="price-scale" id="priceScale"></div>
+</div>
+</div>
+</section>
+
+<!-- QUICK NAV -->
+<div class="quick-nav" id="quickNav">
+<div class="container">
+<div class="qn-title" id="qnTitle">Все модели и цены — нажмите для перехода</div>
+<div class="qn-wrap">
+<button class="qn-arrow qn-arrow-l" id="qnLeft">&#10094;</button>
+<div class="qn-scroll" id="qnScroll"></div>
+<button class="qn-arrow qn-arrow-r" id="qnRight">&#10095;</button>
+</div>
+</div>
+</div>
+
+<!-- FILTERS -->
+<div class="filter-wrap" id="filterWrap">
+<div class="container">
+<div class="filter-tabs" id="filterTabs"></div>
+</div>
+</div>
+
+<!-- CATALOG (model sections) -->
+<div id="catalog"></div>
+
+<!-- PAINT -->
+<section class="paint-section" id="paint">
+<div class="container">
+<div class="sec-header reveal"><h2>Типы покраски</h2><p>Подберём покрытие под ваши задачи</p></div>
+<div class="paint-grid" id="paintGrid"></div>
+<div class="palette-header reveal"><h3>Палитра цветов RAL</h3><p>Основные цвета. Доступно 200+ оттенков под заказ</p></div>
+<div class="color-grid" id="colorGrid"></div>
+<p class="palette-note reveal">Любой цвет по каталогу RAL — под заказ</p>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contacts">
+<div class="container">
+<div class="cta-content">
+<div class="cta-text reveal">
+<h2>Нашли подходящую модель? <em>Давайте обсудим</em></h2>
+<p>Поможем выбрать, рассчитаем стоимость и при необходимости приедем на бесплатный замер с образцами</p>
+<a href="tel:+74999951211" class="cta-phone">+7 (499) 995-12-11</a>
+<a href="https://t.me/zaborz_sales" target="_blank" class="tg-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Написать в Telegram</a>
+<div class="cta-bonuses"><span class="cta-bonus">&#127873; Бесплатный замер</span><span class="cta-bonus">&#128444; 3D-визуализация</span><span class="cta-bonus">&#128196; Расчёт за 15 мин</span></div>
+<div class="cta-info"><span>&#128205; Востряковский пр., 10Б, стр. 2, Москва</span><span>&#128231; info@zabor-z.ru</span><span>&#128336; Пн-Пт: 10:00 — 18:00</span></div>
+</div>
+<div class="reveal">
+<div class="showroom-carousel model-carousel" data-init="0">
+<div class="track">
+<div class="slide"><svg viewBox="0 0 500 340" xmlns="http://www.w3.org/2000/svg"><rect width="500" height="340" fill="#2a3444" rx="12"/><text x="250" y="160" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="18" fill="rgba(255,255,255,.3)" font-weight="600">Фасад шоурума</text><text x="250" y="190" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="12" fill="rgba(255,255,255,.2)">Фото-заглушка</text></svg></div>
+<div class="slide"><svg viewBox="0 0 500 340" xmlns="http://www.w3.org/2000/svg"><rect width="500" height="340" fill="#2a3444" rx="12"/><text x="250" y="160" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="18" fill="rgba(255,255,255,.3)" font-weight="600">Образцы на стенде</text><text x="250" y="190" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="12" fill="rgba(255,255,255,.2)">Фото-заглушка</text></svg></div>
+<div class="slide"><svg viewBox="0 0 500 340" xmlns="http://www.w3.org/2000/svg"><rect width="500" height="340" fill="#2a3444" rx="12"/><text x="250" y="160" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="18" fill="rgba(255,255,255,.3)" font-weight="600">Выбор забора с менеджером</text><text x="250" y="190" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="12" fill="rgba(255,255,255,.2)">Фото-заглушка</text></svg></div>
+</div>
+<button class="mcr-btn mcr-prev">&#10094;</button>
+<button class="mcr-btn mcr-next">&#10095;</button>
+</div>
+<div class="mcr-dots"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+<div class="footer-inner">
+<div><div class="footer-logo">ЗАБОР <span>Z</span></div><p class="footer-desc">Проектируем и устанавливаем современные заборы в Москве и МО. 17 моделей на любой вкус и бюджет.</p></div>
+<div><h4>Каталог</h4><a href="#catalog">Z-образные</a><a href="#catalog">V-образные</a><a href="#catalog">Ранчо</a><a href="#catalog">Профлист</a><a href="#catalog">Штакетник</a><a href="#paint">Покраска</a></div>
+<div><h4>Контакты</h4><a href="tel:+74999951211">+7 (499) 995-12-11</a><a href="mailto:info@zabor-z.ru">info@zabor-z.ru</a><a>Востряковский пр., 10Б, стр. 2, Москва</a><a>Пн-Пт: 10:00 — 18:00</a><a href="https://t.me/zaborz_sales" target="_blank">Telegram: @zaborz_sales</a></div>
+</div>
+<div class="footer-bottom">&copy; 2026 Забор Z. Каталог моделей современных заборов.</div>
+</div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" title="К навигации моделей">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+</button>
+
+<a href="https://t.me/zaborz_sales" target="_blank" class="float-tg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg></a>
+
+<!-- PAINT BACK BUTTON -->
+<button class="paint-back" id="paintBack">&#8593; Вернуться к модели</button><!-- text updated via JS -->
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+<div class="lb-content">
+<button class="lb-close" id="lbClose">&times;</button>
+<button class="lb-nav lb-prev" id="lbPrev">&#10094;</button>
+<button class="lb-nav lb-next" id="lbNext">&#10095;</button>
+<div class="lb-body" id="lbBody"></div>
+<div class="lb-counter" id="lbCounter"></div>
+</div>
+</div>
+
+<script src="catalog-zabor-z-config.js"></script>
+<script>
+if(!window.CATALOG_CONFIG){
+  console.warn('[ЗАБОР Z] Конфиг НЕ загрузился! Проверьте catalog-zabor-z-config.js на ошибки синтаксиса (F12 → Console).');
+}else{
+  console.log('[ЗАБОР Z] Конфиг загружен из catalog-zabor-z-config.js ✓');
+}
+</script>
+<script>
+(function(){
+/* ===== READ CONFIG (with fallback to inline data) ===== */
+var cfg = window.CATALOG_CONFIG || {};
+var cfgContacts = cfg.contacts || {};
+var cfgHero = cfg.hero || {};
+var cfgVS = cfg.valueScale || {};
+var cfgSpecs = cfg.specsConfig || {};
+var cfgCta = cfg.cta || {};
+var cfgTexts = cfg.texts || {};
+var cfgShowroom = cfg.showroom || {};
+
+/* ===== DATA: 17 MODELS ===== */
+var MODELS=[
+/* === Z-ОБРАЗНЫЕ (5) === */
+{id:'z60',type:'z',name:'Z60',typeName:'Z-образная ламель, 60 мм',price:6450,badge:'premium',segment:'premium',
+ desc:'Премиальная Z-ламель 60 мм из толстой стали с порошковой покраской. Максимальная надёжность и долговечность.',
+ descFull:'Усиленный Z-профиль шириной 60 мм изготавливается из стали повышенной толщины (0.7\u20131.5 мм), что обеспечивает исключительную жёсткость секции. Порошковая покраска при 200\u00B0C гарантирует устойчивость к коррозии, ударам и ультрафиолету на десятилетия.',
+ steels:['0.7','1.0','1.5'],paints:['Порошковая'],
+ specs:{life:{val:85,text:'30+ лет'},uv:{val:88,text:'88%'},dent:{val:82,text:'82%'},scratch:{val:85,text:'85%'},warranty:{val:70,text:'7 лет'}}},
+
+{id:'z80',type:'z',name:'Z80',typeName:'Z-образная ламель, 80 мм',price:4250,badge:'hit',segment:'standard',
+ desc:'Широкая Z-ламель 80 мм \u2014 оптимальный баланс цены и внешнего вида. Покрытие полиэстер.',
+ descFull:'Увеличенная ширина ламели 80 мм создаёт солидный вид забора при доступной цене. Сталь 0.5 мм с полиэстер покрытием \u2014 надёжное решение для загородных участков и дач. Доступны варианты: глянец, матовый, под дерево.',
+ steels:['0.5'],paints:['Полиэстер глянец','Полиэстер бархат','Под дерево'],
+ specs:{life:{val:48,text:'12\u201315 лет'},uv:{val:58,text:'58%'},dent:{val:40,text:'40%'},scratch:{val:48,text:'48%'},warranty:{val:28,text:'2 года'}}},
+
+{id:'z60l',type:'z',name:'Z60 Лайт',typeName:'Z-образная ламель, 60 мм',price:4400,badge:'',segment:'standard',
+ desc:'Z-ламель 60 мм из тонкой стали с полиэстер покрытием. Доступная версия премиального профиля.',
+ descFull:'Тот же геометрический профиль Z60, но из стали 0.5 мм с полиэстер покрытием. Отличный выбор для тех, кому нравится форма Z60, но важен бюджет. Глянец, матовый или под дерево на выбор.',
+ steels:['0.5'],paints:['Полиэстер глянец','Полиэстер бархат','Под дерево'],
+ specs:{life:{val:45,text:'10\u201312 лет'},uv:{val:55,text:'55%'},dent:{val:38,text:'38%'},scratch:{val:45,text:'45%'},warranty:{val:25,text:'2 года'}}},
+
+{id:'z55',type:'z',name:'Z55',typeName:'Z-образная ламель, 55 мм',price:3510,badge:'',segment:'economy',
+ desc:'Компактная Z-ламель 55 мм \u2014 самый доступный вариант забора жалюзи.',
+ descFull:'Узкая ламель 55 мм обеспечивает лёгкий воздушный вид ограждения. Идеально для дачных участков и бюджетных проектов без потери в качестве материала. Полиэстер покрытие в трёх вариантах.',
+ steels:['0.5'],paints:['Полиэстер глянец','Полиэстер бархат','Под дерево'],
+ specs:{life:{val:38,text:'10 лет'},uv:{val:50,text:'50%'},dent:{val:35,text:'35%'},scratch:{val:42,text:'42%'},warranty:{val:22,text:'2 года'}}},
+
+{id:'z60p',type:'z',name:'Z60 Практик',typeName:'Z-образная ламель, 60 мм',price:5170,badge:'',segment:'standard',
+ desc:'Z-ламель 60 мм с порошковой покраской. Тонкая сталь + премиальное покрытие.',
+ descFull:'Профиль Z60 из стали 0.5 мм, но с порошковой покраской \u2014 долговечное покрытие при средней цене. Хороший компромисс между бюджетом и сроком службы покрытия.',
+ steels:['0.5'],paints:['Порошковая'],
+ specs:{life:{val:60,text:'18\u201320 лет'},uv:{val:72,text:'72%'},dent:{val:42,text:'42%'},scratch:{val:55,text:'55%'},warranty:{val:40,text:'5 лет'}}},
+
+/* === V-ОБРАЗНЫЕ (5) === */
+{id:'v80',type:'v',name:'V80',typeName:'V-образная ламель, 80 мм',price:12090,badge:'premium',segment:'premium',
+ desc:'Премиальная V-ламель 80 мм из толстой стали. Выразительная геометрия и максимальная прочность.',
+ descFull:'V-образный профиль шириной 80 мм создаёт эффектную игру света и тени на фасаде. Толстая сталь (0.7\u20131.5 мм) с порошковой покраской \u2014 для тех, кто выбирает лучшее. Срок службы забора \u2014 десятилетия.',
+ steels:['0.7','1.0','1.5'],paints:['Порошковая'],
+ specs:{life:{val:90,text:'35+ лет'},uv:{val:90,text:'90%'},dent:{val:85,text:'85%'},scratch:{val:88,text:'88%'},warranty:{val:75,text:'7 лет'}}},
+
+{id:'v60',type:'v',name:'V60',typeName:'V-образная ламель, 60 мм',price:11190,badge:'premium',segment:'premium',
+ desc:'Топовая V-ламель 60 мм \u2014 максимальная приватность и премиальный внешний вид.',
+ descFull:'Узкий шаг V-ламелей 60 мм обеспечивает максимальную приватность и плотную геометрию фасада. Усиленная конструкция из толстой стали с порошковым покрытием. Самая премиальная модель в линейке жалюзи.',
+ steels:['0.7','1.0','1.5'],paints:['Порошковая'],
+ specs:{life:{val:92,text:'35+ лет'},uv:{val:92,text:'92%'},dent:{val:88,text:'88%'},scratch:{val:90,text:'90%'},warranty:{val:80,text:'10 лет'}}},
+
+{id:'v100',type:'v',name:'V100',typeName:'V-образная ламель, 100 мм',price:5610,badge:'hit',segment:'standard',
+ desc:'Широкая V-ламель 100 мм \u2014 современный лаконичный дизайн с открытой геометрией.',
+ descFull:'Увеличенная ширина V-ламели 100 мм создаёт минималистичный рисунок с широкими просветами. Хорошая вентиляция и оригинальный внешний вид. Полиэстер покрытие в трёх вариантах.',
+ steels:['0.5'],paints:['Полиэстер глянец','Полиэстер бархат','Под дерево'],
+ specs:{life:{val:45,text:'12\u201315 лет'},uv:{val:56,text:'56%'},dent:{val:40,text:'40%'},scratch:{val:48,text:'48%'},warranty:{val:28,text:'2 года'}}},
+
+{id:'v55',type:'v',name:'V55',typeName:'V-образная ламель, 55 мм',price:4000,badge:'',segment:'standard',
+ desc:'Компактная V-ламель 55 мм \u2014 элегантная геометрия по доступной цене.',
+ descFull:'Узкий V-профиль шириной 55 мм обеспечивает плотный геометрический рисунок. Полиэстер покрытие в различных вариантах: глянец, матовый, под дерево.',
+ steels:['0.5'],paints:['Полиэстер глянец','Полиэстер бархат','Под дерево'],
+ specs:{life:{val:42,text:'10\u201312 лет'},uv:{val:52,text:'52%'},dent:{val:38,text:'38%'},scratch:{val:45,text:'45%'},warranty:{val:25,text:'2 года'}}},
+
+{id:'v80l',type:'v',name:'V80 Лайт',typeName:'V-образная ламель, 80 мм',price:6590,badge:'',segment:'standard',
+ desc:'V-ламель 80 мм из тонкой стали \u2014 доступная версия премиальной модели.',
+ descFull:'Тот же выразительный V-профиль 80 мм, но из стали 0.5 мм с полиэстер покрытием. Оптимальный баланс эстетики и бюджета. Глянец, матовый или под дерево на выбор.',
+ steels:['0.5'],paints:['Полиэстер глянец','Полиэстер бархат','Под дерево'],
+ specs:{life:{val:44,text:'10\u201312 лет'},uv:{val:54,text:'54%'},dent:{val:39,text:'39%'},scratch:{val:46,text:'46%'},warranty:{val:26,text:'2 года'}}},
+
+/* === РАНЧО (3) === */
+{id:'r-prm',type:'ranch',name:'Ранчо Премиум',typeName:'Доска Ранчо',price:13295,badge:'premium',segment:'premium',
+ desc:'Максимально широкая горизонтальная доска из толстой стали. Неотличима от натурального дерева.',
+ descFull:'Премиальное ранчо из стали повышенной толщины с порошковой покраской. Служит 50+ лет без потери вида. Для элитных коттеджных посёлков и тех, кто выбирает лучшее. Особенно эффектна покраска под дерево.',
+ steels:['0.7','1.0','1.5'],paints:['Порошковая'],
+ specs:{life:{val:95,text:'50+ лет'},uv:{val:94,text:'94%'},dent:{val:90,text:'90%'},scratch:{val:92,text:'92%'},warranty:{val:85,text:'10 лет'}}},
+
+{id:'r-pra',type:'ranch',name:'Ранчо Практик',typeName:'Доска Ранчо',price:7060,badge:'hit',segment:'standard',
+ desc:'Горизонтальные доски в стиле Ранчо с порошковой покраской. Практичный выбор.',
+ descFull:'Стиль ранчо из стали 0.5 мм с порошковым покрытием. Отличная альтернатива деревянным заборам \u2014 не гниёт и не требует ухода. Долговечное покрытие при разумной цене.',
+ steels:['0.5'],paints:['Порошковая'],
+ specs:{life:{val:62,text:'18\u201320 лет'},uv:{val:74,text:'74%'},dent:{val:45,text:'45%'},scratch:{val:58,text:'58%'},warranty:{val:42,text:'5 лет'}}},
+
+{id:'r-eco',type:'ranch',name:'Ранчо Лайт',typeName:'Доска Ранчо',price:5900,badge:'',segment:'economy',
+ desc:'Доступный забор в стиле Ранчо с полиэстер покрытием.',
+ descFull:'Минималистичный дизайн горизонтальных досок по привлекательной цене. Полиэстер покрытие обеспечивает аккуратный вид и базовую защиту. Глянец, матовый или под дерево.',
+ steels:['0.5'],paints:['Полиэстер глянец','Полиэстер бархат','Под дерево'],
+ specs:{life:{val:40,text:'10\u201312 лет'},uv:{val:52,text:'52%'},dent:{val:36,text:'36%'},scratch:{val:44,text:'44%'},warranty:{val:24,text:'2 года'}}},
+
+/* === ПРОФЛИСТ (2) === */
+{id:'pf-h',type:'proflist',name:'Профлист горизонтальный',typeName:'Профилированный лист',price:2090,badge:'',segment:'economy',
+ desc:'Профилированный лист с горизонтальной раскладкой \u2014 современная альтернатива классическому профнастилу.',
+ descFull:'Горизонтальная установка профлиста создаёт эффект современного ограждения вместо типичного вертикального профнастила. Доступная цена и простой монтаж. Полиэстер покрытие.',
+ steels:['0.5'],paints:['Полиэстер глянец','Полиэстер бархат','Под дерево'],
+ specs:{life:{val:35,text:'8\u201310 лет'},uv:{val:48,text:'48%'},dent:{val:30,text:'30%'},scratch:{val:38,text:'38%'},warranty:{val:18,text:'1 год'}}},
+
+{id:'pf-v',type:'proflist',name:'Профлист вертикальный',typeName:'Профилированный лист',price:1580,badge:'',segment:'economy',
+ desc:'Классический профлист вертикальной установки \u2014 максимально бюджетное ограждение.',
+ descFull:'Самый доступный вариант металлического забора. Вертикальный монтаж обеспечивает простоту установки и минимальную стоимость. Полиэстер покрытие в стандартных цветах.',
+ steels:['0.5'],paints:['Полиэстер глянец','Полиэстер бархат','Под дерево'],
+ specs:{life:{val:32,text:'8\u201310 лет'},uv:{val:45,text:'45%'},dent:{val:28,text:'28%'},scratch:{val:35,text:'35%'},warranty:{val:16,text:'1 год'}}},
+
+/* === ШТАКЕТНИК (2) === */
+{id:'sh-h',type:'shtaketnik',name:'Штакетник горизонтальный',typeName:'Металлический штакетник',price:2900,badge:'',segment:'standard',
+ desc:'Металлический штакетник с горизонтальной раскладкой \u2014 стильный и воздушный дизайн.',
+ descFull:'Горизонтальные планки штакетника создают оригинальный эффект и хорошую вентиляцию. Подходит для современной архитектуры. Полиэстер покрытие в различных вариантах.',
+ steels:['0.5'],paints:['Полиэстер глянец','Полиэстер бархат','Под дерево'],
+ specs:{life:{val:40,text:'10\u201312 лет'},uv:{val:52,text:'52%'},dent:{val:34,text:'34%'},scratch:{val:42,text:'42%'},warranty:{val:22,text:'2 года'}}},
+
+{id:'sh-v',type:'shtaketnik',name:'Штакетник вертикальный',typeName:'Металлический штакетник',price:2275,badge:'',segment:'economy',
+ desc:'Классический вертикальный штакетник \u2014 проверенный дизайн по доступной цене.',
+ descFull:'Традиционный вертикальный штакетник из металла. Не гниёт, не требует покраски, служит десятилетия. Полиэстер покрытие в стандартных цветах.',
+ steels:['0.5'],paints:['Полиэстер глянец','Полиэстер бархат','Под дерево'],
+ specs:{life:{val:35,text:'10 лет'},uv:{val:48,text:'48%'},dent:{val:30,text:'30%'},scratch:{val:38,text:'38%'},warranty:{val:18,text:'1 год'}}}
+];
+
+/* === OTHER TYPES (Prochee) === */
+var OTHER_TYPES=[
+  {name:'Деревянный забор',color:'#8B7355'},
+  {name:'Забор из камня',color:'#7A7A7A'},
+  {name:'3D сетка',color:'#4A8C5C'},
+  {name:'Сетка-рабица',color:'#6A8AA8'},
+  {name:'Кованый забор',color:'#5C4033'},
+  {name:'Индивидуальный проект',color:'#c8956c'}
+];
+
+var PAINTS=[
+{name:'Порошковая',icon:'&#9881;',color:'rgba(232,93,38,.1)',
+ desc:'Электростатическое нанесение + полимеризация при 200\u00B0C. Максимальная устойчивость к ударам и коррозии.',
+ pros:['Износостойкость','15+ лет','Ударопрочность'],photoLabel:'Порошковая покраска крупным планом'},
+{name:'Полиэстер глянец',icon:'&#10024;',color:'rgba(200,149,108,.1)',
+ desc:'Заводское покрытие с ярким блеском. Отличная цветостойкость и защита от ультрафиолета.',
+ pros:['Блеск','УФ-защита','Цветостойкость'],photoLabel:'Глянцевый полиэстер крупным планом'},
+{name:'Полиэстер бархат',icon:'&#9632;',color:'rgba(113,128,150,.1)',
+ desc:'Бархатистая текстура без бликов. Благородный сдержанный вид. Скрывает мелкие дефекты.',
+ pros:['Бархат','Без бликов','Благородство'],photoLabel:'Полиэстер бархат крупным планом'},
+{name:'Принт под дерево',icon:'&#127795;',color:'rgba(139,115,85,.1)',
+ desc:'Реалистичная имитация натурального дерева. Не гниёт, не рассыхается, не требует обработки.',
+ pros:['Вау-эффект','Как дерево','0 ухода'],photoLabel:'Покраска под дерево крупным планом'}
+];
+
+var COLORS=[
+{hex:'#8B4513',name:'RAL 8017 Шоколад'},{hex:'#3D3D3D',name:'RAL 7024 Графит'},
+{hex:'#1C1C1C',name:'RAL 9005 Чёрный'},{hex:'#F5F5DC',name:'RAL 1015 Слоновая кость'},
+{hex:'#2E5A27',name:'RAL 6005 Зелёный мох'},{hex:'#6B3A2A',name:'RAL 8004 Терракот'},
+{hex:'#708090',name:'RAL 7046 Серый'},{hex:'#8B0000',name:'RAL 3009 Бордо'},
+{hex:'#4682B4',name:'RAL 5007 Синий'},{hex:'#D2B48C',name:'RAL 1019 Песочный'},
+{hex:'#696969',name:'RAL 7037 Пыльный серый'},{hex:'#F8F8F8',name:'RAL 9003 Белый'}
+];
+
+/* Override data from config if available */
+if(cfg.models) MODELS=cfg.models;
+if(cfg.paints) PAINTS=cfg.paints;
+if(cfg.colors) COLORS=cfg.colors;
+if(cfg.otherTypes) OTHER_TYPES=cfg.otherTypes;
+
+var minP=1e9,maxP=0;
+MODELS.forEach(function(m){if(m.price<minP)minP=m.price;if(m.price>maxP)maxP=m.price});
+
+/* Group-based value scale: reads from config */
+var vsMinPct=cfgVS.groupMinPct||20, vsMaxPct=cfgVS.groupMaxPct||90;
+var valueScaleMap={};
+(function(){
+  var groups={};
+  MODELS.forEach(function(m){
+    /* Priority 1: model-level override */
+    if(m.valueScale!=null){valueScaleMap[m.id]=m.valueScale;return}
+    if(!groups[m.type]) groups[m.type]=[];
+    groups[m.type].push(m);
+  });
+  Object.keys(groups).forEach(function(type){
+    var g=groups[type];
+    var prices=g.map(function(m){return m.price});
+    var lo=Math.min.apply(null,prices),hi=Math.max.apply(null,prices);
+    g.forEach(function(m){
+      if(lo===hi){valueScaleMap[m.id]=(vsMinPct+vsMaxPct)/2;return}
+      valueScaleMap[m.id]=Math.round((vsMinPct+(m.price-lo)/(hi-lo)*(vsMaxPct-vsMinPct))*10)/10;
+    });
+  });
+})()
+
+/* SVG helpers */
+function svgPhoto(name,idx,w,h){
+  var fills=['#d5cfc5','#ccc7bd','#c5c0b5','#bdb8ae'];
+  var lbl=(cfgTexts.photoPlaceholder||'\u0424\u043E\u0442\u043E \u0433\u043E\u0442\u043E\u0432\u043E\u0439 \u0440\u0430\u0431\u043E\u0442\u044B')+' '+(idx+1);
+  return '<svg viewBox="0 0 '+w+' '+h+'" xmlns="http://www.w3.org/2000/svg"><rect width="'+w+'" height="'+h+'" fill="'+fills[idx%4]+'"/><text x="'+(w/2)+'" y="'+(h/2-8)+'" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="15" fill="#8a8070" font-weight="600">'+lbl+'</text><text x="'+(w/2)+'" y="'+(h/2+14)+'" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="12" fill="#a09888">'+name+'</text></svg>';
+}
+
+function svg3d(m){
+  var lines='';
+  if(m.type==='z'){
+    lines='<path d="M18,14 L82,14 L78,30 L14,30Z" stroke="#c8956c" stroke-width="1.5" fill="rgba(200,149,108,.08)" opacity=".7"/><path d="M14,36 L82,36 L78,52 L10,52Z" stroke="#c8956c" stroke-width="1.5" fill="rgba(200,149,108,.06)" opacity=".7"/><path d="M10,58 L82,58 L78,74 L6,74Z" stroke="#c8956c" stroke-width="1.5" fill="rgba(200,149,108,.04)" opacity=".7"/><line x1="18" y1="6" x2="18" y2="82" stroke="#c8956c" stroke-width="2" opacity=".3"/><line x1="82" y1="6" x2="82" y2="82" stroke="#c8956c" stroke-width="2" opacity=".3"/>';
+  }else if(m.type==='v'){
+    lines='<path d="M18,16 L82,16 L50,32Z" stroke="#718096" stroke-width="1.5" fill="rgba(113,128,150,.06)" opacity=".7"/><path d="M18,40 L82,40 L50,56Z" stroke="#718096" stroke-width="1.5" fill="rgba(113,128,150,.06)" opacity=".7"/><path d="M18,64 L82,64 L50,80Z" stroke="#718096" stroke-width="1.5" fill="rgba(113,128,150,.04)" opacity=".7"/><line x1="18" y1="8" x2="18" y2="86" stroke="#c8956c" stroke-width="2" opacity=".3"/><line x1="82" y1="8" x2="82" y2="86" stroke="#c8956c" stroke-width="2" opacity=".3"/>';
+  }else if(m.type==='ranch'){
+    lines='<rect x="16" y="14" width="68" height="14" rx="2" stroke="#8B7355" stroke-width="1.5" fill="rgba(139,115,85,.06)" opacity=".7"/><rect x="16" y="36" width="68" height="14" rx="2" stroke="#8B7355" stroke-width="1.5" fill="rgba(139,115,85,.06)" opacity=".7"/><rect x="16" y="58" width="68" height="14" rx="2" stroke="#8B7355" stroke-width="1.5" fill="rgba(139,115,85,.04)" opacity=".7"/><line x1="18" y1="6" x2="18" y2="80" stroke="#c8956c" stroke-width="2" opacity=".3"/><line x1="82" y1="6" x2="82" y2="80" stroke="#c8956c" stroke-width="2" opacity=".3"/>';
+  }else if(m.type==='proflist'){
+    lines='<path d="M12,18 L20,12 L28,18 L36,12 L44,18 L52,12 L60,18 L68,12 L76,18 L84,12 L88,16 L88,78 L84,82 L76,76 L68,82 L60,76 L52,82 L44,76 L36,82 L28,76 L20,82 L12,76Z" stroke="#6A8AA8" stroke-width="1.2" fill="rgba(106,138,168,.06)" opacity=".6"/><line x1="12" y1="6" x2="12" y2="86" stroke="#c8956c" stroke-width="2" opacity=".3"/><line x1="88" y1="6" x2="88" y2="86" stroke="#c8956c" stroke-width="2" opacity=".3"/>';
+  }else if(m.type==='shtaketnik'){
+    lines='<rect x="16" y="12" width="8" height="70" rx="1" stroke="#5C7A4E" stroke-width="1" fill="rgba(92,122,78,.06)" opacity=".6"/><rect x="30" y="12" width="8" height="70" rx="1" stroke="#5C7A4E" stroke-width="1" fill="rgba(92,122,78,.06)" opacity=".6"/><rect x="44" y="12" width="8" height="70" rx="1" stroke="#5C7A4E" stroke-width="1" fill="rgba(92,122,78,.06)" opacity=".6"/><rect x="58" y="12" width="8" height="70" rx="1" stroke="#5C7A4E" stroke-width="1" fill="rgba(92,122,78,.06)" opacity=".6"/><rect x="72" y="12" width="8" height="70" rx="1" stroke="#5C7A4E" stroke-width="1" fill="rgba(92,122,78,.06)" opacity=".6"/><line x1="10" y1="26" x2="86" y2="26" stroke="#c8956c" stroke-width="1.5" opacity=".3"/><line x1="10" y1="56" x2="86" y2="56" stroke="#c8956c" stroke-width="1.5" opacity=".3"/>';
+  }
+  return '<svg viewBox="0 0 100 95" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="95" fill="#eae5dd" rx="4"/>'+lines+'<text x="50" y="92" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="5" fill="#a09080" font-weight="600">3D \u043C\u043E\u0434\u0435\u043B\u044C</text></svg>';
+}
+
+/* Big 3D for carousel (first slide) */
+function svg3dBig(m){
+  var lines='';
+  if(m.type==='z'){
+    lines='<path d="M60,50 L540,50 L520,110 L40,110Z" stroke="#c8956c" stroke-width="2.5" fill="rgba(200,149,108,.07)"/><path d="M40,130 L540,130 L520,190 L20,190Z" stroke="#c8956c" stroke-width="2.5" fill="rgba(200,149,108,.05)"/><path d="M20,210 L540,210 L520,270 L0,270Z" stroke="#c8956c" stroke-width="2.5" fill="rgba(200,149,108,.04)"/><line x1="60" y1="20" x2="60" y2="300" stroke="#c8956c" stroke-width="3" opacity=".25"/><line x1="540" y1="20" x2="540" y2="300" stroke="#c8956c" stroke-width="3" opacity=".25"/>';
+  }else if(m.type==='v'){
+    lines='<path d="M60,55 L540,55 L300,120Z" stroke="#718096" stroke-width="2.5" fill="rgba(113,128,150,.06)"/><path d="M60,150 L540,150 L300,215Z" stroke="#718096" stroke-width="2.5" fill="rgba(113,128,150,.05)"/><path d="M60,245 L540,245 L300,310Z" stroke="#718096" stroke-width="2.5" fill="rgba(113,128,150,.04)"/><line x1="60" y1="25" x2="60" y2="330" stroke="#c8956c" stroke-width="3" opacity=".25"/><line x1="540" y1="25" x2="540" y2="330" stroke="#c8956c" stroke-width="3" opacity=".25"/>';
+  }else if(m.type==='ranch'){
+    lines='<rect x="50" y="45" width="500" height="55" rx="4" stroke="#8B7355" stroke-width="2.5" fill="rgba(139,115,85,.06)"/><rect x="50" y="120" width="500" height="55" rx="4" stroke="#8B7355" stroke-width="2.5" fill="rgba(139,115,85,.05)"/><rect x="50" y="195" width="500" height="55" rx="4" stroke="#8B7355" stroke-width="2.5" fill="rgba(139,115,85,.04)"/><line x1="60" y1="20" x2="60" y2="280" stroke="#c8956c" stroke-width="3" opacity=".25"/><line x1="540" y1="20" x2="540" y2="280" stroke="#c8956c" stroke-width="3" opacity=".25"/>';
+  }else if(m.type==='proflist'){
+    lines='<path d="M40,55 L80,30 L120,55 L160,30 L200,55 L240,30 L280,55 L320,30 L360,55 L400,30 L440,55 L480,30 L520,55 L560,30 L560,320 L520,295 L480,320 L440,295 L400,320 L360,295 L320,320 L280,295 L240,320 L200,295 L160,320 L120,295 L80,320 L40,295Z" stroke="#6A8AA8" stroke-width="2" fill="rgba(106,138,168,.05)"/><line x1="40" y1="15" x2="40" y2="330" stroke="#c8956c" stroke-width="3" opacity=".25"/><line x1="560" y1="15" x2="560" y2="330" stroke="#c8956c" stroke-width="3" opacity=".25"/>';
+  }else if(m.type==='shtaketnik'){
+    lines='<rect x="60" y="35" width="40" height="280" rx="3" stroke="#5C7A4E" stroke-width="2" fill="rgba(92,122,78,.05)"/><rect x="130" y="35" width="40" height="280" rx="3" stroke="#5C7A4E" stroke-width="2" fill="rgba(92,122,78,.05)"/><rect x="200" y="35" width="40" height="280" rx="3" stroke="#5C7A4E" stroke-width="2" fill="rgba(92,122,78,.05)"/><rect x="270" y="35" width="40" height="280" rx="3" stroke="#5C7A4E" stroke-width="2" fill="rgba(92,122,78,.05)"/><rect x="340" y="35" width="40" height="280" rx="3" stroke="#5C7A4E" stroke-width="2" fill="rgba(92,122,78,.05)"/><rect x="410" y="35" width="40" height="280" rx="3" stroke="#5C7A4E" stroke-width="2" fill="rgba(92,122,78,.05)"/><rect x="480" y="35" width="40" height="280" rx="3" stroke="#5C7A4E" stroke-width="2" fill="rgba(92,122,78,.05)"/><line x1="40" y1="100" x2="555" y2="100" stroke="#c8956c" stroke-width="2.5" opacity=".25"/><line x1="40" y1="220" x2="555" y2="220" stroke="#c8956c" stroke-width="2.5" opacity=".25"/>';
+  }
+  return '<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="360" fill="#eae5dd" rx="8"/>'+lines+'<text x="300" y="350" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="13" fill="#a09080" font-weight="600">3D \u043C\u043E\u0434\u0435\u043B\u044C \u2014 '+m.name+'</text></svg>';
+}
+
+function svgDrawing(m){
+  var d='';
+  if(m.type==='z') d='<path d="M25,25 L45,25 L40,45 L60,45 L55,65 L75,65" stroke="#2d3748" stroke-width="2" fill="none"/>';
+  else if(m.type==='v') d='<path d="M15,28 L15,22 L50,8 L85,22 L85,28 M15,52 L15,46 L50,32 L85,46 L85,52 M15,76 L15,70 L50,56 L85,70 L85,76" stroke="#2d3748" stroke-width="2" fill="none"/>';
+  else if(m.type==='ranch') d='<rect x="12" y="10" width="76" height="12" rx="2" stroke="#2d3748" stroke-width="2" fill="none"/><rect x="12" y="30" width="76" height="12" rx="2" stroke="#2d3748" stroke-width="2" fill="none"/><rect x="12" y="50" width="76" height="12" rx="2" stroke="#2d3748" stroke-width="2" fill="none"/><rect x="12" y="70" width="76" height="12" rx="2" stroke="#2d3748" stroke-width="2" fill="none"/>';
+  else if(m.type==='proflist'&&m.id==='pf-h') d='<path d="M36,5 L24,17 L36,29 L24,41 L36,53 L24,65 L32,73 L68,73 L76,65 L64,53 L76,41 L64,29 L76,17 L68,5Z" stroke="#2d3748" stroke-width="1.5" fill="none"/>';
+  else if(m.type==='proflist') d='<path d="M14,30 L26,20 L38,30 L50,20 L62,30 L74,20 L86,30 L86,65 L74,75 L62,65 L50,75 L38,65 L26,75 L14,65Z" stroke="#2d3748" stroke-width="1.5" fill="none"/>';
+  else if(m.type==='shtaketnik'&&m.id==='sh-h') d='<rect x="12" y="6" width="76" height="6" rx="1" stroke="#2d3748" stroke-width="1.5" fill="none"/><rect x="12" y="25" width="76" height="6" rx="1" stroke="#2d3748" stroke-width="1.5" fill="none"/><rect x="12" y="44" width="76" height="6" rx="1" stroke="#2d3748" stroke-width="1.5" fill="none"/><rect x="12" y="63" width="76" height="6" rx="1" stroke="#2d3748" stroke-width="1.5" fill="none"/><rect x="12" y="15" width="76" height="6" rx="1" stroke="#a09080" stroke-width="1" fill="none"/><rect x="12" y="34" width="76" height="6" rx="1" stroke="#a09080" stroke-width="1" fill="none"/><rect x="12" y="53" width="76" height="6" rx="1" stroke="#a09080" stroke-width="1" fill="none"/><rect x="12" y="72" width="76" height="6" rx="1" stroke="#a09080" stroke-width="1" fill="none"/>';
+  else if(m.type==='shtaketnik') d='<rect x="8" y="10" width="6" height="70" rx="1" stroke="#2d3748" stroke-width="1.5" fill="none"/><rect x="30" y="10" width="6" height="70" rx="1" stroke="#2d3748" stroke-width="1.5" fill="none"/><rect x="52" y="10" width="6" height="70" rx="1" stroke="#2d3748" stroke-width="1.5" fill="none"/><rect x="74" y="10" width="6" height="70" rx="1" stroke="#2d3748" stroke-width="1.5" fill="none"/><rect x="19" y="10" width="6" height="70" rx="1" stroke="#a09080" stroke-width="1" fill="none"/><rect x="41" y="10" width="6" height="70" rx="1" stroke="#a09080" stroke-width="1" fill="none"/><rect x="63" y="10" width="6" height="70" rx="1" stroke="#a09080" stroke-width="1" fill="none"/><rect x="85" y="10" width="6" height="70" rx="1" stroke="#a09080" stroke-width="1" fill="none"/>';
+  return '<svg viewBox="0 0 100 95" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="95" fill="#f0ece6" rx="4"/>'+d+'<text x="50" y="90" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="5" fill="#a09080" font-weight="600">\u0427\u0435\u0440\u0442\u0451\u0436</text></svg>';
+}
+
+function svgDrawingSmall(m){
+  var d='';
+  if(m.type==='z') d='<path d="M8,8 L20,8 L18,16 L28,16 L26,24 L38,24" stroke="#2d3748" stroke-width="1.3" fill="none"/>';
+  else if(m.type==='v') d='<path d="M8,12 L8,9 L23,2 L38,9 L38,12 M8,24 L8,21 L23,14 L38,21 L38,24 M8,36 L8,33 L23,26 L38,33 L38,36" stroke="#2d3748" stroke-width="1.2" fill="none"/>';
+  else if(m.type==='ranch') d='<rect x="5" y="4" width="36" height="5" rx="1" stroke="#2d3748" stroke-width="1" fill="none"/><rect x="5" y="12" width="36" height="5" rx="1" stroke="#2d3748" stroke-width="1" fill="none"/><rect x="5" y="20" width="36" height="5" rx="1" stroke="#2d3748" stroke-width="1" fill="none"/><rect x="5" y="28" width="36" height="5" rx="1" stroke="#2d3748" stroke-width="1" fill="none"/>';
+  else if(m.type==='proflist'&&m.id==='pf-h') d='<path d="M17,2 L11,8 L17,14 L11,20 L17,26 L11,32 L15,36 L31,36 L35,32 L29,26 L35,20 L29,14 L35,8 L31,2Z" stroke="#2d3748" stroke-width="1" fill="none"/>';
+  else if(m.type==='proflist') d='<path d="M6,14 L12,8 L18,14 L24,8 L30,14 L36,8 L40,12 L40,28 L36,32 L30,26 L24,32 L18,26 L12,32 L6,26Z" stroke="#2d3748" stroke-width="1" fill="none"/>';
+  else if(m.type==='shtaketnik'&&m.id==='sh-h') d='<rect x="5" y="2" width="36" height="3" rx="0.5" stroke="#2d3748" stroke-width="0.8" fill="none"/><rect x="5" y="11" width="36" height="3" rx="0.5" stroke="#2d3748" stroke-width="0.8" fill="none"/><rect x="5" y="20" width="36" height="3" rx="0.5" stroke="#2d3748" stroke-width="0.8" fill="none"/><rect x="5" y="29" width="36" height="3" rx="0.5" stroke="#2d3748" stroke-width="0.8" fill="none"/><rect x="5" y="6" width="36" height="3" rx="0.5" stroke="#a09080" stroke-width="0.6" fill="none"/><rect x="5" y="15" width="36" height="3" rx="0.5" stroke="#a09080" stroke-width="0.6" fill="none"/><rect x="5" y="24" width="36" height="3" rx="0.5" stroke="#a09080" stroke-width="0.6" fill="none"/><rect x="5" y="33" width="36" height="3" rx="0.5" stroke="#a09080" stroke-width="0.6" fill="none"/>';
+  else if(m.type==='shtaketnik') d='<rect x="3" y="5" width="3" height="28" rx="0.5" stroke="#2d3748" stroke-width="0.8" fill="none"/><rect x="13" y="5" width="3" height="28" rx="0.5" stroke="#2d3748" stroke-width="0.8" fill="none"/><rect x="23" y="5" width="3" height="28" rx="0.5" stroke="#2d3748" stroke-width="0.8" fill="none"/><rect x="33" y="5" width="3" height="28" rx="0.5" stroke="#2d3748" stroke-width="0.8" fill="none"/><rect x="8" y="5" width="3" height="28" rx="0.5" stroke="#a09080" stroke-width="0.6" fill="none"/><rect x="18" y="5" width="3" height="28" rx="0.5" stroke="#a09080" stroke-width="0.6" fill="none"/><rect x="28" y="5" width="3" height="28" rx="0.5" stroke="#a09080" stroke-width="0.6" fill="none"/><rect x="38" y="5" width="3" height="28" rx="0.5" stroke="#a09080" stroke-width="0.6" fill="none"/>';
+  return '<svg viewBox="0 0 46 38" xmlns="http://www.w3.org/2000/svg"><rect width="46" height="38" fill="#f0ece6" rx="4"/>'+d+'</svg>';
+}
+
+function svgThumb(m){
+  var d='';
+  if(m.type==='z') d='<path d="M8,8 L52,8 L48,18 L4,18Z" stroke="#c8956c" stroke-width="1" fill="none" opacity=".6"/><path d="M4,22 L52,22 L48,32 L0,32Z" stroke="#c8956c" stroke-width="1" fill="none" opacity=".6"/>';
+  else if(m.type==='v') d='<path d="M8,8 L52,8 L30,20Z" stroke="#718096" stroke-width="1" fill="none" opacity=".6"/><path d="M8,24 L52,24 L30,36Z" stroke="#718096" stroke-width="1" fill="none" opacity=".6"/>';
+  else if(m.type==='ranch') d='<rect x="6" y="6" width="48" height="10" rx="1" stroke="#8B7355" stroke-width="1" fill="none" opacity=".6"/><rect x="6" y="22" width="48" height="10" rx="1" stroke="#8B7355" stroke-width="1" fill="none" opacity=".6"/>';
+  else if(m.type==='proflist') d='<path d="M4,12 L12,6 L20,12 L28,6 L36,12 L44,6 L52,12 L52,30 L44,36 L36,30 L28,36 L20,30 L12,36 L4,30Z" stroke="#6A8AA8" stroke-width=".8" fill="none" opacity=".5"/>';
+  else if(m.type==='shtaketnik') d='<rect x="6" y="4" width="6" height="32" rx="1" stroke="#5C7A4E" stroke-width=".8" fill="none" opacity=".5"/><rect x="18" y="4" width="6" height="32" rx="1" stroke="#5C7A4E" stroke-width=".8" fill="none" opacity=".5"/><rect x="30" y="4" width="6" height="32" rx="1" stroke="#5C7A4E" stroke-width=".8" fill="none" opacity=".5"/><rect x="42" y="4" width="6" height="32" rx="1" stroke="#5C7A4E" stroke-width=".8" fill="none" opacity=".5"/>';
+  return '<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="40" fill="#eee8e0" rx="2"/>'+d+'</svg>';
+}
+
+function svgOther(item){
+  return '<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="200" fill="#e8e3dd" rx="8"/><circle cx="150" cy="85" r="35" fill="'+item.color+'" opacity=".15" stroke="'+item.color+'" stroke-width="1.5" opacity=".3"/><text x="150" y="90" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="28" fill="'+item.color+'" opacity=".4">?</text><text x="150" y="145" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="13" fill="#8a8070" font-weight="600">'+item.name+'</text><text x="150" y="165" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="10" fill="#a09888">\u0424\u043E\u0442\u043E-\u0437\u0430\u0433\u043B\u0443\u0448\u043A\u0430</text></svg>';
+}
+
+/* ===== RENDER PRICE SCALE ===== */
+function renderPriceScale(){
+  var el=document.getElementById('priceScale');
+  var pstFull=cfgHero.priceScaleTitle||'\u0426\u0435\u043D\u043E\u0432\u043E\u0439 \u0434\u0438\u0430\u043F\u0430\u0437\u043E\u043D \u043C\u043E\u0434\u0435\u043B\u0435\u0439 \u2014 \u043D\u0430\u0436\u043C\u0438\u0442\u0435 \u043D\u0430 \u0442\u043E\u0447\u043A\u0443';
+  var pstShort=cfgHero.priceScaleTitleMobile||'\u0426\u0435\u043D\u043E\u0432\u043E\u0439 \u0434\u0438\u0430\u043F\u0430\u0437\u043E\u043D \u043C\u043E\u0434\u0435\u043B\u0435\u0439';
+  var h='<div class="price-scale-title"><span class="pst-full">'+pstFull+'</span><span class="pst-short">'+pstShort+'</span></div><div class="price-bar">';
+  MODELS.forEach(function(m){
+    var bg=m.segment==='economy'?'var(--bronze-l)':m.segment==='standard'?'var(--bronze)':'var(--gold)';
+    /* sqrt scale: compresses upper range, spreads lower prices */
+    var pos=(Math.sqrt(m.price-minP)/Math.sqrt(maxP-minP)*100);
+    pos=Math.max(2,Math.min(98,pos)).toFixed(1);
+    h+='<div class="price-dot" style="left:'+pos+'%;background:'+bg+'" data-model="'+m.id+'"><div class="tip">'+m.name+' \u2014 '+m.price.toLocaleString('ru')+' &#8381;/\u043C\u00B2</div></div>';
+  });
+  h+='</div><div class="price-labels"><span>\u043E\u0442 <b>'+minP.toLocaleString('ru')+' &#8381;/\u043C\u00B2</b></span><span>\u0434\u043E <b>'+maxP.toLocaleString('ru')+' &#8381;/\u043C\u00B2</b></span></div>';
+  el.innerHTML=h;
+  /* Click on dots scrolls to model */
+  el.querySelectorAll('.price-dot').forEach(function(dot){
+    dot.addEventListener('click',function(){
+      var target=document.getElementById('model-'+dot.dataset.model);
+      if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+}
+
+/* ===== RENDER QUICK NAV ===== */
+function renderQuickNav(){
+  var el=document.getElementById('qnScroll');
+  var titleEl=document.getElementById('qnTitle');
+  if(titleEl && cfgTexts.quickNavTitle) titleEl.textContent=cfgTexts.quickNavTitle;
+  var sorted=MODELS.slice().sort(function(a,b){return a.price-b.price});
+  var h='';
+  sorted.forEach(function(m){
+    var segColor=m.segment==='economy'?'var(--bronze-l)':m.segment==='standard'?'var(--bronze)':'var(--gold)';
+    h+='<a href="#model-'+m.id+'" class="qn-card" data-model="'+m.id+'">';
+    if(m.badge==='hit') h+='<div class="qn-badge">\u0425\u0418\u0422</div>';
+    h+='<div class="qn-seg" style="background:'+segColor+'"></div>';
+    h+='<div class="qn-icon">'+svgDrawingSmall(m)+'</div>';
+    h+='<div class="qn-name">'+m.name+'</div>';
+    h+='<div class="qn-price">'+m.price.toLocaleString('ru')+' \u20BD</div>';
+    h+='<div class="qn-compact">'+m.name+' \u00B7 '+m.price.toLocaleString('ru')+'\u20BD</div>';
+    h+='</a>';
+  });
+  el.innerHTML=h;
+  /* Arrow buttons for PC */
+  var leftArr=document.getElementById('qnLeft');
+  var rightArr=document.getElementById('qnRight');
+  if(leftArr) leftArr.onclick=function(){el.scrollBy({left:-240,behavior:'smooth'})};
+  if(rightArr) rightArr.onclick=function(){el.scrollBy({left:240,behavior:'smooth'})};
+  /* Click on QN card: reset filter if model is hidden */
+  el.querySelectorAll('.qn-card').forEach(function(card){
+    card.addEventListener('click',function(e){
+      var mid=card.dataset.model;
+      if(!mid) return;
+      var sec=document.getElementById('model-'+mid);
+      if(sec && sec.classList.contains('filtered-out')){
+        e.preventDefault();
+        /* Reset filter to "Все" */
+        var tabs=document.querySelectorAll('.filter-tab');
+        tabs.forEach(function(t){t.classList.remove('active')});
+        var allTab=document.querySelector('.filter-tab[data-filter="all"]');
+        if(allTab) allTab.classList.add('active');
+        document.querySelectorAll('.model-section').forEach(function(s){s.classList.remove('filtered-out')});
+        /* Now scroll to the model */
+        setTimeout(function(){sec.scrollIntoView({behavior:'smooth',block:'start'})},50);
+      }
+    });
+  });
+}
+
+/* ===== BACK TO TOP ===== */
+function initBackTop(){
+  var btn=document.getElementById('backTop');
+  var qn=document.getElementById('quickNav');
+  window.addEventListener('scroll',function(){
+    btn.classList.toggle('visible',window.scrollY>600);
+  });
+  btn.addEventListener('click',function(){
+    qn.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+}
+
+/* ===== RENDER FILTERS ===== */
+function renderFilters(){
+  var el=document.getElementById('filterTabs');
+  var cfgF=cfg.filters;
+  var types=cfgF?cfgF.map(function(f){return {f:f.key,n:f.name,c:f.count}}):[
+    {f:'all',n:'\u0412\u0441\u0435',c:MODELS.length+'+'},
+    {f:'z',n:'Z-\u043E\u0431\u0440\u0430\u0437\u043D\u044B\u0435',c:5},
+    {f:'v',n:'V-\u043E\u0431\u0440\u0430\u0437\u043D\u044B\u0435',c:5},
+    {f:'ranch',n:'\u0420\u0430\u043D\u0447\u043E',c:3},
+    {f:'proflist',n:'\u041F\u0440\u043E\u0444\u043B\u0438\u0441\u0442',c:2},
+    {f:'shtaketnik',n:'\u0428\u0442\u0430\u043A\u0435\u0442\u043D\u0438\u043A',c:2},
+    {f:'other',n:'\u041F\u0440\u043E\u0447\u0435\u0435',c:''}
+  ];
+  el.innerHTML=types.map(function(t){
+    var cntH=t.c?'<span class="cnt">'+t.c+'</span>':'';
+    return '<button class="filter-tab'+(t.f==='all'?' active':'')+'" data-filter="'+t.f+'">'+t.n+cntH+'</button>';
+  }).join('');
+}
+
+/* ===== RENDER MODEL SECTIONS ===== */
+function renderModels(){
+  var wrap=document.getElementById('catalog');
+  var html='';
+  MODELS.forEach(function(m,i){
+    var badgeH='';
+    if(m.badge==='hit') badgeH='<span class="model-badge badge-hit">'+(m.badgeText||'\u0425\u0438\u0442 \u043F\u0440\u043E\u0434\u0430\u0436')+'</span>';
+    else if(m.badge==='premium') badgeH='<span class="model-badge badge-prem">'+(m.badgeText||'\u041F\u0440\u0435\u043C\u0438\u0443\u043C')+'</span>';
+    else if(m.badge==='new') badgeH='<span class="model-badge badge-new">'+(m.badgeText||'\u041D\u043E\u0432\u0438\u043D\u043A\u0430')+'</span>';
+
+    /* Carousel: just photos from config. Empty = one placeholder */
+    var mPhotos=(m.photos||[]).filter(function(p){return !!p});
+    var slides='';
+    if(mPhotos.length>0){
+      for(var s=0;s<mPhotos.length;s++){
+        slides+='<div class="slide"><img src="'+mPhotos[s]+'" alt="'+m.name+' \u0444\u043E\u0442\u043E '+(s+1)+'"></div>';
+      }
+    } else {
+      slides='<div class="slide">'+svgPhoto(m.name,0,600,360)+'</div>';
+    }
+
+    var specsTitle=cfgSpecs.title||'\u0425\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0438 \u043A\u0430\u0447\u0435\u0441\u0442\u0432\u0430';
+    var specsH='<div class="specs-block"><div class="specs-title">'+specsTitle+'</div>';
+    var specItems=cfgSpecs.items||[
+      {icon:'&#9200;',label:'\u0421\u0440\u043E\u043A \u0441\u043B\u0443\u0436\u0431\u044B',key:'life',mergeKeys:null},
+      {icon:'&#9728;',label:'\u0423\u0424-\u0443\u0441\u0442\u043E\u0439\u0447\u0438\u0432\u043E\u0441\u0442\u044C',key:'uv',mergeKeys:null},
+      {icon:'&#128737;',label:'\u0423\u0441\u0442\u043E\u0439\u0447\u0438\u0432\u043E\u0441\u0442\u044C \u043A \u043F\u043E\u0432\u0440\u0435\u0436\u0434\u0435\u043D\u0438\u044F\u043C',key:'damage',mergeKeys:['dent','scratch']},
+      {icon:'&#9989;',label:'\u0413\u0430\u0440\u0430\u043D\u0442\u0438\u044F',key:'warranty',mergeKeys:null}
+    ];
+    var barMin=cfgSpecs.barMinDisplay||15;
+    specItems.forEach(function(si){
+      var sp;
+      if(si.mergeKeys){
+        var sum=0;
+        si.mergeKeys.forEach(function(k){sum+=m.specs[k].val});
+        var avgVal=Math.round(sum/si.mergeKeys.length);
+        var score=Math.round(avgVal/10);
+        if(score<1) score=1; if(score>10) score=10;
+        sp={val:avgVal,text:score+' \u0438\u0437 10'};
+      } else {
+        sp=m.specs[si.key];
+      }
+      var displayVal=Math.max(sp.val,barMin);
+      var displayText=sp.text;
+      if(si.key==='uv'){
+        var score2=Math.round(sp.val/10);
+        if(score2<1) score2=1; if(score2>10) score2=10;
+        displayText=score2+' \u0438\u0437 10';
+      }
+      specsH+='<div class="spec-row" data-val="'+displayVal+'"><span class="spec-icon">'+si.icon+'</span><span class="spec-label">'+si.label+'</span><div class="spec-bar"><div class="spec-fill" style="--val:'+displayVal+'%"></div></div><span class="spec-val">'+displayText+'</span></div>';
+    });
+    specsH+='</div>';
+
+    var steelLbl=cfgTexts.steelLabel||'\u0421\u0442\u0430\u043B\u044C:';
+    var paintLbl=cfgTexts.paintLabel||'\u041F\u043E\u043A\u0440\u0430\u0441\u043A\u0430:';
+    var tagsH='<div class="model-materials">';
+    tagsH+='<div class="mat-group"><span class="mat-label">'+steelLbl+'</span><div class="mat-options">';
+    m.steels.forEach(function(s){tagsH+='<span class="mat-opt steel">'+s+' \u043C\u043C</span>'});
+    tagsH+='</div></div>';
+    tagsH+='<div class="mat-group"><span class="mat-label">'+paintLbl+'</span><div class="mat-options">';
+    m.paints.forEach(function(p){tagsH+='<span class="mat-opt paint" data-model="'+m.id+'" style="cursor:pointer" title="\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435 \u043E \u043F\u043E\u043A\u0440\u0430\u0441\u043A\u0435">'+p+'</span>'});
+    tagsH+='</div></div></div>';
+
+    html+='<section class="model-section reveal" data-type="'+m.type+'" id="model-'+m.id+'">';
+    html+='<div class="container"><div class="model-layout">';
+    /* Left: sticky carousel + drawing mini */
+    html+='<div class="model-left"><div class="model-carousel" data-init="0"><div class="track">'+slides+'</div><button class="mcr-btn mcr-prev">&#10094;</button><button class="mcr-btn mcr-next">&#10095;</button></div><div class="mcr-dots"></div>';
+    var mDrawings=(m.drawings||[]).filter(function(p){return !!p});
+    var drawThumb=mDrawings.length>0?'<img src="'+mDrawings[0]+'" alt="Чертёж '+m.name+'" style="width:50px;height:38px;border-radius:4px;object-fit:cover;flex-shrink:0">':svgDrawingSmall(m);
+    html+='<div class="drawing-mini" onclick="openDrawing(this,\''+m.id+'\')">'+drawThumb+'<span>'+(cfgTexts.drawingLabel||'\u0427\u0435\u0440\u0442\u0451\u0436 \u043B\u0430\u043C\u0435\u043B\u0438 \u2014 \u0443\u0432\u0435\u043B\u0438\u0447\u0438\u0442\u044C &#8599;')+'</span></div>';
+    html+='</div>';
+    /* Right top: name, price, value scale (shown first on mobile) */
+    html+='<div class="model-info-top">'+badgeH;
+    html+='<h2 class="model-name">'+m.name+'</h2>';
+    html+='<div class="model-type-label">'+m.typeName+'</div>';
+    var priceLbl=cfgTexts.priceLabel||'\u0441\u0435\u043A\u0446\u0438\u044F \u0437\u0430\u0431\u043E\u0440\u0430 +<br>\u043C\u043E\u043D\u0442\u0430\u0436 \u043D\u0430 \u0433\u043E\u0442\u043E\u0432\u044B\u0435 \u0441\u0442\u043E\u043B\u0431\u044B';
+    html+='<div class="model-price"><span>\u043E\u0442 '+m.price.toLocaleString('ru')+' &#8381;/\u043C\u00B2</span> <small>'+priceLbl+'</small></div>';
+    /* value scale */
+    var vsLeft=cfgVS.labelLeft||'\u042D\u043A\u043E\u043D\u043E\u043C';
+    var vsRight=cfgVS.labelRight||'\u041F\u0440\u0435\u043C\u0438\u0443\u043C';
+    html+='<div class="value-scale"><span class="vs-label">'+vsLeft+'</span><div class="vs-bar"><div class="vs-fill" style="width:'+(valueScaleMap[m.id]||50)+'%"></div></div><span class="vs-label">'+vsRight+'</span></div>';
+    html+='</div>'; /* /model-info-top */
+    /* Right bottom: desc, specs, materials (shown after carousel on mobile) */
+    html+='<div class="model-info-bottom">';
+    /* desc */
+    html+='<p class="model-desc-short">'+m.desc+'</p>';
+    html+='<button class="desc-toggle" onclick="toggleDesc(this)">'+(cfgTexts.descToggleOpen||'\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435 \u043E \u043C\u043E\u0434\u0435\u043B\u0438 &darr;')+'</button>';
+    html+='<div class="model-desc-full">'+m.descFull+'</div>';
+    /* specs */
+    html+=specsH;
+    /* tags */
+    html+=tagsH;
+    html+='</div>'; /* /model-info-bottom */
+    html+='</div></div></section>'; /* /model-layout /container /section */
+  });
+
+  /* === PROCHEE SECTION === */
+  html+='<section class="model-section reveal" data-type="other" id="model-other" style="padding:70px 0 60px">';
+  html+='<div class="container">';
+  html+='<div class="sec-header" style="margin-bottom:32px"><h2>'+(cfgTexts.otherSectionH2||'\u041F\u0440\u043E\u0447\u0438\u0435 \u0442\u0438\u043F\u044B \u0437\u0430\u0431\u043E\u0440\u043E\u0432')+'</h2><p>'+(cfgTexts.otherSectionP||'\u0422\u0430\u043A\u0436\u0435 \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u043C \u0441 \u0434\u0440\u0443\u0433\u0438\u043C\u0438 \u043C\u0430\u0442\u0435\u0440\u0438\u0430\u043B\u0430\u043C\u0438 \u0438 \u043A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0446\u0438\u044F\u043C\u0438')+'</p></div>';
+  html+='<div class="other-grid">';
+  OTHER_TYPES.forEach(function(ot){
+    var otImg=ot.photo?'<img src="'+ot.photo+'" alt="'+ot.name+'" style="width:100%;height:200px;object-fit:cover;border-radius:8px">':svgOther(ot);
+    html+='<div class="other-card">'+otImg+'<div class="other-card-label">'+ot.name+'</div></div>';
+  });
+  html+='</div>';
+  html+='<div class="other-cta"><h3>'+(cfgTexts.otherCtaH3||'\u041D\u0435 \u043D\u0430\u0448\u043B\u0438 \u043D\u0443\u0436\u043D\u044B\u0439 \u0442\u0438\u043F?')+'</h3><p>'+(cfgTexts.otherCtaP||'\u0421\u043F\u0440\u043E\u0435\u043A\u0442\u0438\u0440\u0443\u0435\u043C \u0438 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u043C \u0437\u0430\u0431\u043E\u0440 \u043B\u044E\u0431\u043E\u0433\u043E \u0442\u0438\u043F\u0430 \u043F\u043E \u0438\u043D\u0434\u0438\u0432\u0438\u0434\u0443\u0430\u043B\u044C\u043D\u043E\u043C\u0443 \u043F\u0440\u043E\u0435\u043A\u0442\u0443. \u041F\u0440\u0438\u0448\u043B\u0438\u0442\u0435 \u0444\u043E\u0442\u043E \u0438\u043B\u0438 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 \u2014 \u0440\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0435\u043C \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C.')+'</p></div>';
+  html+='</div></section>';
+
+  wrap.innerHTML=html;
+}
+
+/* ===== RENDER PAINT ===== */
+function renderPaint(){
+  var grid=document.getElementById('paintGrid');
+  var paintBtnText=cfgTexts.paintButtonText||'\u041F\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u0444\u043E\u0442\u043E &#8599;';
+  var h='';
+  PAINTS.forEach(function(p,pi){
+    h+='<div class="paint-card reveal">';
+    h+='<div class="paint-icon" style="background:'+p.color+'"><span>'+p.icon+'</span></div>';
+    h+='<h3>'+p.name+'</h3><p>'+p.desc+'</p>';
+    h+='<div class="paint-pros">'+p.pros.map(function(pr){return '<span>'+pr+'</span>'}).join('')+'</div>';
+    h+='<button class="paint-photo-btn" onclick="openPaintPhoto('+pi+')">'+paintBtnText+'</button>';
+    h+='</div>';
+  });
+  grid.innerHTML=h;
+  /* Paint section H2/P from config */
+  var paintSec=document.getElementById('paint');
+  if(paintSec){
+    var sh=paintSec.querySelector('.sec-header');
+    if(sh){
+      var pH2=cfgTexts.paintSectionH2;var pP=cfgTexts.paintSectionP;
+      if(pH2) sh.querySelector('h2').textContent=pH2;
+      if(pP) sh.querySelector('p').textContent=pP;
+    }
+    var palH=paintSec.querySelector('.palette-header');
+    if(palH){
+      var palH3=cfgTexts.paletteH3;var palP=cfgTexts.paletteP;
+      if(palH3) palH.querySelector('h3').textContent=palH3;
+      if(palP) palH.querySelector('p').textContent=palP;
+    }
+    var palNote=paintSec.querySelector('.palette-note');
+    if(palNote && cfgTexts.paletteNote) palNote.textContent=cfgTexts.paletteNote;
+  }
+
+  var cg=document.getElementById('colorGrid');
+  cg.innerHTML=COLORS.map(function(c){
+    var brd=c.hex==='#F8F8F8'?';border:1px solid rgba(0,0,0,.12)':'';
+    return '<div class="color-sw" style="background:'+c.hex+brd+'"><div class="swtip">'+c.name+'</div></div>';
+  }).join('');
+}
+
+/* ===== CAROUSELS ===== */
+function initCarousels(){
+  document.querySelectorAll('.model-carousel').forEach(function(el){
+    if(el.dataset.init==='1') return;
+    el.dataset.init='1';
+    var track=el.querySelector('.track');
+    var slides=el.querySelectorAll('.slide');
+    var dotsWrap=el.parentNode.querySelector('.mcr-dots');
+    var n=slides.length, cur=0;
+    var dhtml='';for(var i=0;i<n;i++) dhtml+='<button class="mcr-dot'+(i===0?' active':'')+'"></button>';
+    dotsWrap.innerHTML=dhtml;
+    var dots=dotsWrap.querySelectorAll('.mcr-dot');
+    function go(idx){cur=((idx%n)+n)%n;track.style.transform='translateX(-'+cur*100+'%)';dots.forEach(function(d,j){d.classList.toggle('active',j===cur)})}
+    el.querySelector('.mcr-prev').onclick=function(){go(cur-1)};
+    el.querySelector('.mcr-next').onclick=function(){go(cur+1)};
+    dots.forEach(function(d,j){d.onclick=function(){go(j)}});
+    /* Click on slide opens lightbox with carousel */
+    slides.forEach(function(slide,si){
+      slide.style.cursor='zoom-in';
+      slide.addEventListener('click',function(e){
+        if(e.target.closest('.mcr-btn')) return;
+        var allHtml=[];
+        slides.forEach(function(s){allHtml.push(s.innerHTML)});
+        openLB(allHtml,si);
+      });
+    });
+    var sx=0;
+    el.addEventListener('touchstart',function(e){sx=e.changedTouches[0].clientX},{passive:true});
+    el.addEventListener('touchend',function(e){var dx=sx-e.changedTouches[0].clientX;if(Math.abs(dx)>50){go(dx>0?cur+1:cur-1)}},{passive:true});
+  });
+}
+
+/* ===== FILTERS ===== */
+function initFilters(){
+  var tabs=document.querySelectorAll('.filter-tab');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click',function(){
+      tabs.forEach(function(t){t.classList.remove('active')});
+      tab.classList.add('active');
+      var f=tab.dataset.filter;
+      document.querySelectorAll('.model-section').forEach(function(sec){
+        if(f==='all'||sec.dataset.type===f){sec.classList.remove('filtered-out')}
+        else{sec.classList.add('filtered-out')}
+      });
+    });
+  });
+}
+
+/* ===== PAINT TAG CLICK → scroll to Paint + back button ===== */
+function initPaintLinks(){
+  var paintBack=document.getElementById('paintBack');
+  if(cfgTexts.paintBackBtn) paintBack.innerHTML=cfgTexts.paintBackBtn;
+  var returnTarget=null;
+  document.querySelectorAll('.mat-opt.paint').forEach(function(el){
+    el.addEventListener('click',function(){
+      returnTarget=el.dataset.model;
+      var paintSec=document.getElementById('paint');
+      if(paintSec) paintSec.scrollIntoView({behavior:'smooth',block:'start'});
+      paintBack.classList.add('visible');
+    });
+  });
+  paintBack.addEventListener('click',function(){
+    if(returnTarget){
+      var target=document.getElementById('model-'+returnTarget);
+      if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    paintBack.classList.remove('visible');
+    returnTarget=null;
+  });
+}
+
+/* ===== DESCRIPTION TOGGLE ===== */
+window.toggleDesc=function(btn){
+  var full=btn.nextElementSibling;
+  var openT=cfgTexts.descToggleOpen||'\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435 \u043E \u043C\u043E\u0434\u0435\u043B\u0438 &darr;';
+  var closeT=cfgTexts.descToggleClosed||'\u0421\u0432\u0435\u0440\u043D\u0443\u0442\u044C &uarr;';
+  if(full.style.display==='block'){full.style.display='none';btn.innerHTML=openT;}
+  else{full.style.display='block';btn.innerHTML=closeT;}
+};
+
+/* ===== LIGHTBOX with carousel ===== */
+var lb=document.getElementById('lightbox');
+var lbBody=document.getElementById('lbBody');
+var lbPrev=document.getElementById('lbPrev');
+var lbNext=document.getElementById('lbNext');
+var lbCounter=document.getElementById('lbCounter');
+var lbSlides=[], lbCur=0;
+function openLB(htmlOrSlides,startIdx){
+  if(Array.isArray(htmlOrSlides)){
+    lbSlides=htmlOrSlides;lbCur=startIdx||0;
+    lbBody.innerHTML=lbSlides[lbCur];
+    var multi=lbSlides.length>1;
+    lbPrev.style.display=multi?'flex':'none';
+    lbNext.style.display=multi?'flex':'none';
+    lbCounter.style.display=multi?'block':'none';
+    if(multi) lbCounter.textContent=(lbCur+1)+' / '+lbSlides.length;
+  } else {
+    lbSlides=[];lbCur=0;
+    lbBody.innerHTML=htmlOrSlides;
+    lbPrev.style.display='none';lbNext.style.display='none';lbCounter.style.display='none';
+  }
+  lb.classList.add('active');document.body.style.overflow='hidden';
+}
+function lbGo(dir){
+  if(lbSlides.length<2) return;
+  lbCur=((lbCur+dir)%lbSlides.length+lbSlides.length)%lbSlides.length;
+  lbBody.innerHTML=lbSlides[lbCur];
+  lbCounter.textContent=(lbCur+1)+' / '+lbSlides.length;
+}
+function closeLB(){lb.classList.remove('active');document.body.style.overflow='';lbSlides=[];lbCur=0}
+lbPrev.onclick=function(){lbGo(-1)};
+lbNext.onclick=function(){lbGo(1)};
+document.getElementById('lbClose').onclick=closeLB;
+lb.addEventListener('click',function(e){if(e.target===lb) closeLB()});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape') closeLB();
+  if(lb.classList.contains('active')){
+    if(e.key==='ArrowLeft') lbGo(-1);
+    if(e.key==='ArrowRight') lbGo(1);
+  }
+});
+/* Touch swipe for lightbox on mobile */
+var lbSx=0;
+lb.addEventListener('touchstart',function(e){lbSx=e.changedTouches[0].clientX},{passive:true});
+lb.addEventListener('touchend',function(e){var dx=lbSx-e.changedTouches[0].clientX;if(Math.abs(dx)>50){lbGo(dx>0?1:-1)}},{passive:true});
+
+window.openDrawing=function(el,mid){
+  var m=MODELS.find(function(x){return x.id===mid});
+  if(!m) return;
+  var mDrawings=(m.drawings||[]).filter(function(p){return !!p});
+  if(mDrawings.length>0){
+    var slides=[];
+    for(var i=0;i<mDrawings.length;i++){
+      slides.push('<img src="'+mDrawings[i]+'" alt="Чертёж '+m.name+' '+(i+1)+'" style="width:100%;max-height:90vh;object-fit:contain">');
+    }
+    openLB(slides,0);
+  } else {
+    openLB(svgDrawing(m).replace('viewBox="0 0 100 95"','viewBox="0 0 100 95" style="width:100%;max-width:600px"'));
+  }
+};
+window.openPaintPhoto=function(paintIdx){
+  var p=PAINTS[paintIdx];if(!p)return;
+  var label=p.photoLabel||p.name;
+  var captions=cfgTexts.paintPhotoSlides||['\u041A\u0440\u0443\u043F\u043D\u044B\u0439 \u043F\u043B\u0430\u043D','\u0422\u0435\u043A\u0441\u0442\u0443\u0440\u0430 \u043F\u043E\u043A\u0440\u044B\u0442\u0438\u044F','\u041D\u0430 \u0437\u0430\u0431\u043E\u0440\u0435'];
+  var pPhotos=p.photos||[null,null,null];
+  var paintSlides=[];
+  for(var i=0;i<3;i++){
+    if(pPhotos[i]){
+      paintSlides.push('<img src="'+pPhotos[i]+'" alt="'+label+' '+(i+1)+'" style="width:100%;max-height:90vh;object-fit:contain">');
+    }else{
+      var fills=['#e8e3dd','#ddd8d0','#d5cfc5'];
+      paintSlides.push('<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="400" fill="'+fills[i]+'" rx="8"/><text x="300" y="180" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="18" fill="#8a8070" font-weight="600">'+label+'</text><text x="300" y="210" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="13" fill="#a09888">'+(captions[i]||'')+' \u2014 \u0444\u043E\u0442\u043E '+(i+1)+'</text></svg>');
+    }
+  }
+  openLB(paintSlides,0);
+};
+
+/* ===== HEADER SCROLL ===== */
+window.addEventListener('scroll',function(){document.getElementById('header').classList.toggle('scrolled',window.scrollY>50)});
+
+/* ===== MOBILE NAV ===== */
+(function(){
+  var b=document.getElementById('burger'),n=document.getElementById('mobileNav'),o=document.getElementById('mobileOverlay');
+  function toggle(){b.classList.toggle('active');n.classList.toggle('active');o.classList.toggle('active');document.body.style.overflow=n.classList.contains('active')?'hidden':''}
+  b.onclick=toggle;o.onclick=toggle;
+  n.querySelectorAll('a').forEach(function(a){a.onclick=function(){if(n.classList.contains('active'))toggle()}});
+})();
+
+/* ===== SCROLL REVEAL + SPEC BARS ===== */
+function initReveal(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('visible')});return}
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+
+  var specObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('animated');specObs.unobserve(e.target)}})},{threshold:0.3});
+  document.querySelectorAll('.spec-row').forEach(function(el){specObs.observe(el)});
+}
+
+/* ===== SMOOTH SCROLL ===== */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}})});
+
+/* ===== APPLY CONFIG TO STATIC HTML ===== */
+function applyConfig(){
+  var c=cfgContacts;
+  /* Hero */
+  if(cfgHero.badge){var hb=document.querySelector('.hero-badge');if(hb) hb.textContent=cfgHero.badge}
+  if(cfgHero.h1||cfgHero.h1em){
+    var h1=document.querySelector('.hero-content h1');
+    if(h1) h1.innerHTML=(cfgHero.h1||'')+'<em>'+(cfgHero.h1em||'')+'</em>';
+  }
+  if(cfgHero.subtitle){var hs=document.querySelector('.hero-sub');if(hs) hs.textContent=cfgHero.subtitle}
+  /* Header phone */
+  if(c.phone){
+    var hp=document.querySelector('.header-phone');
+    if(hp){hp.textContent=c.phone;hp.href='tel:'+(c.phoneLink||c.phone.replace(/[^+\d]/g,''))}
+  }
+  /* Mobile nav */
+  var mn=document.getElementById('mobileNav');
+  if(mn && c.phone){
+    var phoneA=mn.querySelector('a[href^="tel:"]');
+    if(phoneA){phoneA.textContent=c.phone;phoneA.href='tel:'+(c.phoneLink||'')}
+  }
+  if(mn && c.telegram){
+    var tgA=mn.querySelector('a[href*="t.me"]');
+    if(tgA) tgA.href=c.telegram;
+  }
+  /* CTA section */
+  var cta=document.getElementById('contacts');
+  if(cta){
+    if(cfgCta.h2||cfgCta.h2em){
+      var ctaH2=cta.querySelector('.cta-text h2');
+      if(ctaH2) ctaH2.innerHTML=(cfgCta.h2||'')+'<em>'+(cfgCta.h2em||'')+'</em>';
+    }
+    if(cfgCta.subtitle){var ctaP=cta.querySelector('.cta-text > p');if(ctaP) ctaP.textContent=cfgCta.subtitle}
+    if(c.phone){var ctaPh=cta.querySelector('.cta-phone');if(ctaPh){ctaPh.textContent=c.phone;ctaPh.href='tel:'+(c.phoneLink||'')}}
+    if(c.telegram){var ctaTg=cta.querySelector('.tg-btn');if(ctaTg) ctaTg.href=c.telegram}
+    if(cfgCta.buttonText){var ctaTg2=cta.querySelector('.tg-btn');if(ctaTg2){var svg=ctaTg2.querySelector('svg');ctaTg2.textContent=cfgCta.buttonText;if(svg)ctaTg2.prepend(svg)}}
+    if(cfgCta.bonuses){
+      var bWrap=cta.querySelector('.cta-bonuses');
+      if(bWrap) bWrap.innerHTML=cfgCta.bonuses.map(function(b){return '<span class="cta-bonus">'+b+'</span>'}).join('');
+    }
+    /* CTA info line (address, email, hours) */
+    var infoW=cta.querySelector('.cta-info');
+    if(infoW){
+      var infoH='';
+      if(c.address) infoH+='<span>&#128205; '+c.address+'</span>';
+      if(c.email) infoH+='<span>&#128231; '+c.email+'</span>';
+      if(c.hours) infoH+='<span>&#128336; '+c.hours+'</span>';
+      if(infoH) infoW.innerHTML=infoH;
+    }
+  }
+  /* Showroom carousel */
+  var showSlides=cfgShowroom.slides;
+  if(showSlides){
+    var showTrack=document.querySelector('.showroom-carousel .track');
+    if(showTrack){
+      showTrack.innerHTML=showSlides.map(function(s){
+        if(s.photo) return '<div class="slide"><img src="'+s.photo+'" alt="'+s.label+'" style="width:100%;height:100%;object-fit:cover;border-radius:12px"></div>';
+        return '<div class="slide"><svg viewBox="0 0 500 340" xmlns="http://www.w3.org/2000/svg"><rect width="500" height="340" fill="#2a3444" rx="12"/><text x="250" y="160" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="18" fill="rgba(255,255,255,.3)" font-weight="600">'+s.label+'</text><text x="250" y="190" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="12" fill="rgba(255,255,255,.2)">'+(cfgTexts.photoStubLabel||'\u0424\u043E\u0442\u043E-\u0437\u0430\u0433\u043B\u0443\u0448\u043A\u0430')+'</text></svg></div>';
+      }).join('');
+    }
+  }
+  /* Footer */
+  var ft=document.querySelector('.footer');
+  if(ft){
+    var fLogo=ft.querySelector('.footer-logo');
+    var fDesc=ft.querySelector('.footer-desc');
+    if(fDesc && cfgTexts.footerDesc) fDesc.textContent=cfgTexts.footerDesc;
+    /* Footer contacts */
+    var fContacts=ft.querySelectorAll('.footer-inner > div');
+    if(fContacts.length>=3){
+      var fC=fContacts[2];
+      var fLinks='<h4>\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u044B</h4>';
+      if(c.phone) fLinks+='<a href="tel:'+(c.phoneLink||'')+'">'+c.phone+'</a>';
+      if(c.email) fLinks+='<a href="mailto:'+c.email+'">'+c.email+'</a>';
+      if(c.address) fLinks+='<a>'+c.address+'</a>';
+      if(c.hours) fLinks+='<a>'+c.hours+'</a>';
+      if(c.telegram) fLinks+='<a href="'+c.telegram+'" target="_blank">Telegram: '+(c.telegramHandle||'')+'</a>';
+      fC.innerHTML=fLinks;
+    }
+    var fBot=ft.querySelector('.footer-bottom');
+    if(fBot && cfgTexts.copyright) fBot.innerHTML=cfgTexts.copyright;
+  }
+  /* Floating TG button */
+  if(c.telegram){var floatTg=document.querySelector('.float-tg');if(floatTg) floatTg.href=c.telegram}
+  /* Back to top title */
+  if(cfgTexts.backTopTitle){var bt=document.getElementById('backTop');if(bt) bt.title=cfgTexts.backTopTitle}
+}
+
+/* ===== INIT ===== */
+applyConfig();
+renderPriceScale();
+renderQuickNav();
+renderFilters();
+renderModels();
+renderPaint();
+initCarousels();
+initFilters();
+initPaintLinks();
+initBackTop();
+requestAnimationFrame(function(){requestAnimationFrame(function(){initReveal()})});
+
+})();
+</script>
+</body>
+</html>
