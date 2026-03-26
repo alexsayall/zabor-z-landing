@@ -872,7 +872,7 @@ function renderModels(){
     var slides='';
     if(mPhotos.length>0){
       for(var s=0;s<mPhotos.length;s++){
-        slides+='<div class="slide"><img src="'+mPhotos[s]+'" alt="'+m.name+' \u0444\u043E\u0442\u043E '+(s+1)+'"></div>';
+        slides+='<div class="slide"><img src="'+mPhotos[s]+'" alt="'+m.name+' \u0444\u043E\u0442\u043E '+(s+1)+'" loading="lazy"></div>';
       }
     } else {
       slides='<div class="slide">'+svgPhoto(m.name,0,600,360)+'</div>';
@@ -925,7 +925,7 @@ function renderModels(){
     /* Left: sticky carousel + drawing mini */
     html+='<div class="model-left"><div class="model-carousel" data-init="0"><div class="track">'+slides+'</div><button class="mcr-btn mcr-prev">&#10094;</button><button class="mcr-btn mcr-next">&#10095;</button></div><div class="mcr-dots"></div>';
     var mDrawings=(m.drawings||[]).filter(function(p){return !!p});
-    var drawThumb=mDrawings.length>0?'<img src="'+mDrawings[0]+'" alt="Чертёж '+m.name+'" style="width:50px;height:38px;border-radius:4px;object-fit:cover;flex-shrink:0">':svgDrawingSmall(m);
+    var drawThumb=mDrawings.length>0?'<img src="'+mDrawings[0]+'" alt="Чертёж '+m.name+'" loading="lazy" style="width:50px;height:38px;border-radius:4px;object-fit:cover;flex-shrink:0">':svgDrawingSmall(m);
     html+='<div class="drawing-mini" onclick="openDrawing(this,\''+m.id+'\')">'+drawThumb+'<span>'+(cfgTexts.drawingLabel||'\u0427\u0435\u0440\u0442\u0451\u0436 \u043B\u0430\u043C\u0435\u043B\u0438 \u2014 \u0443\u0432\u0435\u043B\u0438\u0447\u0438\u0442\u044C &#8599;')+'</span></div>';
     html+='</div>';
     /* Right top: name, price, value scale (shown first on mobile) */
@@ -959,7 +959,7 @@ function renderModels(){
   html+='<div class="sec-header" style="margin-bottom:32px"><h2>'+(cfgTexts.otherSectionH2||'\u041F\u0440\u043E\u0447\u0438\u0435 \u0442\u0438\u043F\u044B \u0437\u0430\u0431\u043E\u0440\u043E\u0432')+'</h2><p>'+(cfgTexts.otherSectionP||'\u0422\u0430\u043A\u0436\u0435 \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u043C \u0441 \u0434\u0440\u0443\u0433\u0438\u043C\u0438 \u043C\u0430\u0442\u0435\u0440\u0438\u0430\u043B\u0430\u043C\u0438 \u0438 \u043A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0446\u0438\u044F\u043C\u0438')+'</p></div>';
   html+='<div class="other-grid">';
   OTHER_TYPES.forEach(function(ot){
-    var otImg=ot.photo?'<img src="'+ot.photo+'" alt="'+ot.name+'" style="width:100%;height:200px;object-fit:cover;border-radius:8px">':svgOther(ot);
+    var otImg=ot.photo?'<img src="'+ot.photo+'" alt="'+ot.name+'" loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:8px">':svgOther(ot);
     html+='<div class="other-card">'+otImg+'<div class="other-card-label">'+ot.name+'</div></div>';
   });
   html+='</div>';
@@ -1246,7 +1246,7 @@ function applyConfig(){
     var showTrack=document.querySelector('.showroom-carousel .track');
     if(showTrack){
       showTrack.innerHTML=showSlides.map(function(s){
-        if(s.photo) return '<div class="slide"><img src="'+s.photo+'" alt="'+s.label+'" style="width:100%;height:100%;object-fit:cover;border-radius:12px"></div>';
+        if(s.photo) return '<div class="slide"><img src="'+s.photo+'" alt="'+s.label+'" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:12px"></div>';
         return '<div class="slide"><svg viewBox="0 0 500 340" xmlns="http://www.w3.org/2000/svg"><rect width="500" height="340" fill="#2a3444" rx="12"/><text x="250" y="160" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="18" fill="rgba(255,255,255,.3)" font-weight="600">'+s.label+'</text><text x="250" y="190" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="12" fill="rgba(255,255,255,.2)">'+(cfgTexts.photoStubLabel||'\u0424\u043E\u0442\u043E-\u0437\u0430\u0433\u043B\u0443\u0448\u043A\u0430')+'</text></svg></div>';
       }).join('');
     }
