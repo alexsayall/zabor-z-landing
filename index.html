@@ -78,6 +78,24 @@ img{max-width:100%;display:block}
 .filter-tab .cnt{font-size:10px;font-weight:700;padding:2px 6px;border-radius:8px;background:rgba(200,149,108,.2);color:var(--bronze);margin-left:5px}
 .filter-tab.active .cnt{background:rgba(255,255,255,.15);color:rgba(255,255,255,.8)}
 
+/* PRICE TOGGLE */
+.price-toggle-wrap{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px}
+.price-toggle{display:flex;background:var(--white);border-radius:30px;border:2px solid rgba(0,0,0,.08);overflow:hidden}
+.price-toggle-btn{padding:8px 20px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all .3s;font-family:inherit;white-space:nowrap}
+.price-toggle-btn.active{background:var(--dark);color:var(--white)}
+.price-toggle-label{font-size:11px;color:var(--muted);font-weight:500}
+
+/* PRICE INFO TOOLTIP */
+.price-info-btn{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:rgba(200,149,108,.15);color:var(--bronze);font-size:11px;font-weight:700;cursor:pointer;border:none;margin-left:6px;vertical-align:middle;position:relative;font-family:inherit;line-height:1}
+.price-info-btn:hover{background:rgba(200,149,108,.3)}
+.price-tooltip-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.price-tooltip-overlay.active{opacity:1;pointer-events:all}
+.price-tooltip-box{background:var(--white);border-radius:16px;padding:28px 32px;max-width:440px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.2);position:relative}
+.price-tooltip-box h4{font-size:16px;margin-bottom:12px;color:var(--text)}
+.price-tooltip-box p{font-size:14px;color:var(--muted);line-height:1.6;margin:0}
+.price-tooltip-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);line-height:1}
+.price-tooltip-close:hover{color:var(--text)}
+
 /* ========== MODEL SECTIONS ========== */
 .model-section{padding:70px 0 50px;transition:opacity .4s}
 .model-section:nth-child(odd){background:var(--white)}
@@ -352,6 +370,13 @@ img{max-width:100%;display:block}
   /* Filters: fade scroll hint */
   .filter-wrap .container{position:relative}
   .filter-wrap .container::after{content:'';position:absolute;right:0;top:0;bottom:0;width:35px;background:linear-gradient(to right,transparent,var(--light));pointer-events:none;z-index:1}
+  /* Price toggle mobile */
+  .price-toggle-wrap{margin-top:10px;gap:6px}
+  .price-toggle-btn{padding:6px 14px;font-size:11px}
+  .price-toggle-label{font-size:10px}
+  .price-tooltip-box{padding:20px 24px}
+  .price-tooltip-box h4{font-size:15px}
+  .price-tooltip-box p{font-size:13px}
 }
 @media(max-width:480px){
   .qn-card{width:100px;padding:6px 8px}
@@ -413,6 +438,22 @@ img{max-width:100%;display:block}
 <div class="filter-wrap" id="filterWrap">
 <div class="container">
 <div class="filter-tabs" id="filterTabs"></div>
+<div class="price-toggle-wrap">
+<span class="price-toggle-label">Цена:</span>
+<div class="price-toggle" id="priceToggle">
+<button class="price-toggle-btn active" data-mode="m2">Монтаж на готовые столбы</button>
+<button class="price-toggle-btn" data-mode="turnkey">Монтаж под ключ</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Price tooltip overlay -->
+<div class="price-tooltip-overlay" id="priceTooltipOverlay">
+<div class="price-tooltip-box">
+<button class="price-tooltip-close" onclick="closePriceTooltip()">&times;</button>
+<h4 id="priceTooltipTitle">Что входит в стоимость?</h4>
+<p id="priceTooltipText"></p>
 </div>
 </div>
 
@@ -575,7 +616,7 @@ var MODELS=[
  steels:['0.5'],paints:['Полиэстер глянец','Полиэстер бархат','Под дерево'],
  specs:{life:{val:44,text:'10\u201312 лет'},uv:{val:54,text:'54%'},dent:{val:39,text:'39%'},scratch:{val:46,text:'46%'},warranty:{val:26,text:'2 года'}}},
 
-/* === РАНЧО (3) === */
+/* === РАНЧО (4) === */
 {id:'r-prm',type:'ranch',name:'Ранчо Премиум',typeName:'Доска Ранчо',price:13295,badge:'premium',segment:'premium',
  desc:'Максимально широкая горизонтальная доска из толстой стали. Неотличима от натурального дерева.',
  descFull:'Премиальное ранчо из стали повышенной толщины с порошковой покраской. Служит 50+ лет без потери вида. Для элитных коттеджных посёлков и тех, кто выбирает лучшее. Особенно эффектна покраска под дерево.',
@@ -593,6 +634,12 @@ var MODELS=[
  descFull:'Минималистичный дизайн горизонтальных досок по привлекательной цене. Полиэстер покрытие обеспечивает аккуратный вид и базовую защиту. Глянец, матовый или под дерево.',
  steels:['0.5'],paints:['Полиэстер глянец','Полиэстер бархат','Под дерево'],
  specs:{life:{val:40,text:'10\u201312 лет'},uv:{val:52,text:'52%'},dent:{val:36,text:'36%'},scratch:{val:44,text:'44%'},warranty:{val:24,text:'2 года'}}},
+
+{id:'r-eko',type:'ranch',name:'Ранчо Эко',typeName:'Штакетник стилизованный под Ранчо',price:2390,badge:'',segment:'economy',
+ desc:'Самый доступный вариант «Ранчо-образных» заборов. Стилизованный штакетник в горизонтальном исполнении с регулируемым зазором.',
+ descFull:'Классическая «П» образная форма планки штакетника с прямым резом имитирует ламель «доску» забора Ранчо. Элегантный внешний вид по самой доступной цене.',
+ steels:['0.5'],paints:['Полиэстер глянец','Полиэстер бархат','Под дерево'],
+ specs:{life:{val:38,text:'10 лет'},uv:{val:50,text:'50%'},dent:{val:35,text:'35%'},scratch:{val:42,text:'42%'},warranty:{val:22,text:'2 года'}}},
 
 /* === ПРОФЛИСТ (2) === */
 {id:'pf-h',type:'proflist',name:'Профлист горизонтальный',typeName:'Профилированный лист',price:2090,badge:'',segment:'economy',
@@ -775,9 +822,9 @@ function renderPriceScale(){
     /* sqrt scale: compresses upper range, spreads lower prices */
     var pos=(Math.sqrt(m.price-minP)/Math.sqrt(maxP-minP)*100);
     pos=Math.max(2,Math.min(98,pos)).toFixed(1);
-    h+='<div class="price-dot" style="left:'+pos+'%;background:'+bg+'" data-model="'+m.id+'"><div class="tip">'+m.name+' \u2014 '+m.price.toLocaleString('ru')+' &#8381;/\u043C\u00B2</div></div>';
+    h+='<div class="price-dot" style="left:'+pos+'%;background:'+bg+'" data-model="'+m.id+'" data-base-price="'+m.price+'"><div class="tip">'+m.name+' \u2014 '+m.price.toLocaleString('ru')+' &#8381;/\u043C\u00B2</div></div>';
   });
-  h+='</div><div class="price-labels"><span>\u043E\u0442 <b>'+minP.toLocaleString('ru')+' &#8381;/\u043C\u00B2</b></span><span>\u0434\u043E <b>'+maxP.toLocaleString('ru')+' &#8381;/\u043C\u00B2</b></span></div>';
+  h+='</div><div class="price-labels"><span>\u043E\u0442 <b class="ps-min">'+minP.toLocaleString('ru')+' &#8381;/\u043C\u00B2</b></span><span>\u0434\u043E <b class="ps-max">'+maxP.toLocaleString('ru')+' &#8381;/\u043C\u00B2</b></span></div>';
   el.innerHTML=h;
   /* Click on dots scrolls to model */
   el.querySelectorAll('.price-dot').forEach(function(dot){
@@ -802,8 +849,8 @@ function renderQuickNav(){
     h+='<div class="qn-seg" style="background:'+segColor+'"></div>';
     h+='<div class="qn-icon">'+svgDrawingSmall(m)+'</div>';
     h+='<div class="qn-name">'+m.name+'</div>';
-    h+='<div class="qn-price">'+m.price.toLocaleString('ru')+' \u20BD</div>';
-    h+='<div class="qn-compact">'+m.name+' \u00B7 '+m.price.toLocaleString('ru')+'\u20BD</div>';
+    h+='<div class="qn-price" data-base-price="'+m.price+'">'+m.price.toLocaleString('ru')+' \u20BD</div>';
+    h+='<div class="qn-compact" data-base-price="'+m.price+'">'+m.name+' \u00B7 '+m.price.toLocaleString('ru')+'\u20BD</div>';
     h+='</a>';
   });
   el.innerHTML=h;
@@ -853,7 +900,7 @@ function renderFilters(){
     {f:'all',n:'\u0412\u0441\u0435',c:MODELS.length+'+'},
     {f:'z',n:'Z-\u043E\u0431\u0440\u0430\u0437\u043D\u044B\u0435',c:5},
     {f:'v',n:'V-\u043E\u0431\u0440\u0430\u0437\u043D\u044B\u0435',c:5},
-    {f:'ranch',n:'\u0420\u0430\u043D\u0447\u043E',c:3},
+    {f:'ranch',n:'\u0420\u0430\u043D\u0447\u043E',c:4},
     {f:'proflist',n:'\u041F\u0440\u043E\u0444\u043B\u0438\u0441\u0442',c:2},
     {f:'shtaketnik',n:'\u0428\u0442\u0430\u043A\u0435\u0442\u043D\u0438\u043A',c:2},
     {f:'other',n:'\u041F\u0440\u043E\u0447\u0435\u0435',c:''}
@@ -868,7 +915,19 @@ function renderFilters(){
 function renderModels(){
   var wrap=document.getElementById('catalog');
   var html='';
-  MODELS.forEach(function(m,i){
+  /* Sort models by price (ascending) within each type group, preserving type order */
+  var typeOrder=['z','v','ranch','proflist','shtaketnik'];
+  var sorted=[];
+  typeOrder.forEach(function(t){
+    var group=MODELS.filter(function(m){return m.type===t});
+    group.sort(function(a,b){return a.price-b.price});
+    sorted=sorted.concat(group);
+  });
+  /* Add any models with unknown types at the end */
+  MODELS.forEach(function(m){
+    if(typeOrder.indexOf(m.type)===-1 && sorted.indexOf(m)===-1) sorted.push(m);
+  });
+  sorted.forEach(function(m,i){
     var badgeH='';
     if(m.badge==='hit') badgeH='<span class="model-badge badge-hit">'+(m.badgeText||'\u0425\u0438\u0442 \u043F\u0440\u043E\u0434\u0430\u0436')+'</span>';
     else if(m.badge==='premium') badgeH='<span class="model-badge badge-prem">'+(m.badgeText||'\u041F\u0440\u0435\u043C\u0438\u0443\u043C')+'</span>';
@@ -939,8 +998,7 @@ function renderModels(){
     html+='<div class="model-info-top">'+badgeH;
     html+='<h2 class="model-name">'+m.name+'</h2>';
     html+='<div class="model-type-label">'+m.typeName+'</div>';
-    var priceLbl=cfgTexts.priceLabel||'\u0441\u0435\u043A\u0446\u0438\u044F \u0437\u0430\u0431\u043E\u0440\u0430 +<br>\u043C\u043E\u043D\u0442\u0430\u0436 \u043D\u0430 \u0433\u043E\u0442\u043E\u0432\u044B\u0435 \u0441\u0442\u043E\u043B\u0431\u044B';
-    html+='<div class="model-price"><span>\u043E\u0442 '+m.price.toLocaleString('ru')+' &#8381;/\u043C\u00B2</span> <small>'+priceLbl+'</small></div>';
+    html+='<div class="model-price" data-base-price="'+m.price+'"><span class="mp-value">\u043E\u0442 '+m.price.toLocaleString('ru')+' &#8381;/\u043C\u00B2</span><button class="price-info-btn" onclick="openPriceTooltip(event)" title="\u0427\u0442\u043E \u0432\u0445\u043E\u0434\u0438\u0442 \u0432 \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C?">?</button> <small class="mp-label">\u0441\u0435\u043A\u0446\u0438\u044F \u0437\u0430\u0431\u043E\u0440\u0430 +<br>\u043C\u043E\u043D\u0442\u0430\u0436 \u043D\u0430 \u0433\u043E\u0442\u043E\u0432\u044B\u0435 \u0441\u0442\u043E\u043B\u0431\u044B</small></div>';
     /* value scale */
     var vsLeft=cfgVS.labelLeft||'\u042D\u043A\u043E\u043D\u043E\u043C';
     var vsRight=cfgVS.labelRight||'\u041F\u0440\u0435\u043C\u0438\u0443\u043C';
@@ -1285,6 +1343,101 @@ function applyConfig(){
   if(cfgTexts.backTopTitle){var bt=document.getElementById('backTop');if(bt) bt.title=cfgTexts.backTopTitle}
 }
 
+/* ===== PRICE TOGGLE ===== */
+var TURNKEY_POST_EXTRA=1800; /* ₽/м.п. за столб */
+var TURNKEY_HEIGHT=2; /* расчётная высота забора в метрах */
+var currentPriceMode='m2'; /* 'm2' or 'turnkey' */
+
+function calcTurnkey(priceM2){
+  return priceM2*TURNKEY_HEIGHT+TURNKEY_POST_EXTRA;
+}
+
+function initPriceToggle(){
+  var wrap=document.getElementById('priceToggle');
+  if(!wrap) return;
+  wrap.querySelectorAll('.price-toggle-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var mode=btn.dataset.mode;
+      if(mode===currentPriceMode) return;
+      currentPriceMode=mode;
+      wrap.querySelectorAll('.price-toggle-btn').forEach(function(b){b.classList.remove('active')});
+      btn.classList.add('active');
+      updateAllPrices();
+    });
+  });
+}
+
+function updateAllPrices(){
+  var isTurnkey=currentPriceMode==='turnkey';
+  var unitM2='&#8381;/\u043C\u00B2';
+  var unitMP='&#8381;/\u043C.\u043F.';
+  var unit=isTurnkey?unitMP:unitM2;
+  var labelM2='\u0441\u0435\u043A\u0446\u0438\u044F \u0437\u0430\u0431\u043E\u0440\u0430 +<br>\u043C\u043E\u043D\u0442\u0430\u0436 \u043D\u0430 \u0433\u043E\u0442\u043E\u0432\u044B\u0435 \u0441\u0442\u043E\u043B\u0431\u044B';
+  var labelTK='\u043F\u043E\u0434 \u043A\u043B\u044E\u0447';
+  /* Update model cards */
+  document.querySelectorAll('.model-price[data-base-price]').forEach(function(el){
+    var base=parseInt(el.dataset.basePrice);
+    var total=isTurnkey?calcTurnkey(base):base;
+    el.querySelector('.mp-value').innerHTML='\u043E\u0442 '+total.toLocaleString('ru')+' '+unit;
+    el.querySelector('.mp-label').innerHTML=isTurnkey?labelTK:labelM2;
+  });
+  /* Update QN cards */
+  document.querySelectorAll('.qn-price[data-base-price]').forEach(function(el){
+    var base=parseInt(el.dataset.basePrice);
+    var total=isTurnkey?calcTurnkey(base):base;
+    el.textContent=total.toLocaleString('ru')+' \u20BD';
+  });
+  document.querySelectorAll('.qn-compact[data-base-price]').forEach(function(el){
+    var base=parseInt(el.dataset.basePrice);
+    var total=isTurnkey?calcTurnkey(base):base;
+    var card=el.closest('.qn-card');
+    var name=card?card.querySelector('.qn-name').textContent:'';
+    el.textContent=name+' \u00B7 '+total.toLocaleString('ru')+'\u20BD';
+  });
+  /* Update price scale dots */
+  document.querySelectorAll('.price-dot[data-base-price]').forEach(function(dot){
+    var base=parseInt(dot.dataset.basePrice);
+    var total=isTurnkey?calcTurnkey(base):base;
+    var tip=dot.querySelector('.tip');
+    if(tip){
+      var name=tip.textContent.split(' \u2014 ')[0];
+      tip.innerHTML=name+' \u2014 '+total.toLocaleString('ru')+' '+unit;
+    }
+  });
+  /* Update price scale min/max labels */
+  var psMin=document.querySelector('.ps-min');
+  var psMax=document.querySelector('.ps-max');
+  var lo=isTurnkey?calcTurnkey(minP):minP;
+  var hi=isTurnkey?calcTurnkey(maxP):maxP;
+  if(psMin) psMin.innerHTML=lo.toLocaleString('ru')+' '+unit;
+  if(psMax) psMax.innerHTML=hi.toLocaleString('ru')+' '+unit;
+}
+
+/* ===== PRICE TOOLTIP ===== */
+var PRICE_TOOLTIP_M2='\u041F\u043E\u043B\u043D\u044B\u0439 \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442 \u043C\u0430\u0442\u0435\u0440\u0438\u0430\u043B\u043E\u0432 \u0441\u0435\u043A\u0446\u0438\u0438 \u0437\u0430\u0431\u043E\u0440\u0430, \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442 \u043A\u0440\u0435\u043F\u0435\u0436\u0430, \u043C\u043E\u043D\u0442\u0430\u0436 \u0441\u0435\u043A\u0446\u0438\u0438 \u043D\u0430 \u0433\u043E\u0442\u043E\u0432\u044B\u0435 \u0441\u0442\u043E\u043B\u0431\u044B \u0437\u0430\u043A\u0430\u0437\u0447\u0438\u043A\u0430.';
+var PRICE_TOOLTIP_TK='\u0420\u0430\u0441\u0447\u0451\u0442\u043D\u0430\u044F \u0432\u044B\u0441\u043E\u0442\u0430 \u0437\u0430\u0431\u043E\u0440\u0430 2\u043C. \u041C\u0435\u0442\u0430\u043B\u043B\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u0441\u0442\u043E\u043B\u0431 \u0432 \u043F\u043E\u0440\u043E\u0448\u043A\u043E\u0432\u043E\u043C \u043F\u043E\u043A\u0440\u044B\u0442\u0438\u0438 \u0441 \u043C\u043E\u043D\u0442\u0430\u0436\u043E\u043C \u0432 \u0433\u0440\u0443\u043D\u0442 \u043D\u0430 1,5\u20132\u043C \u0438 \u0437\u0430\u0431\u0443\u0442\u043E\u0432\u043A\u043E\u0439 \u0449\u0435\u0431\u043D\u0435\u043C, \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442 \u043C\u0430\u0442\u0435\u0440\u0438\u0430\u043B\u043E\u0432 \u0441\u0435\u043A\u0446\u0438\u0438 \u0437\u0430\u0431\u043E\u0440\u0430, \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0442 \u043A\u0440\u0435\u043F\u0435\u0436\u0430, \u043C\u043E\u043D\u0442\u0430\u0436 \u0441\u0435\u043A\u0446\u0438\u0438 \u043D\u0430 \u0433\u043E\u0442\u043E\u0432\u044B\u0435 \u0441\u0442\u043E\u043B\u0431\u044B.';
+
+window.openPriceTooltip=function(e){
+  e.preventDefault();e.stopPropagation();
+  var overlay=document.getElementById('priceTooltipOverlay');
+  var title=document.getElementById('priceTooltipTitle');
+  var text=document.getElementById('priceTooltipText');
+  if(currentPriceMode==='turnkey'){
+    title.textContent='\u0427\u0442\u043E \u0432\u0445\u043E\u0434\u0438\u0442 \u0432 \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u00AB\u043F\u043E\u0434 \u043A\u043B\u044E\u0447\u00BB?';
+    text.textContent=PRICE_TOOLTIP_TK;
+  } else {
+    title.textContent='\u0427\u0442\u043E \u0432\u0445\u043E\u0434\u0438\u0442 \u0432 \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C?';
+    text.textContent=PRICE_TOOLTIP_M2;
+  }
+  overlay.classList.add('active');
+}
+window.closePriceTooltip=function(){
+  document.getElementById('priceTooltipOverlay').classList.remove('active');
+};
+document.getElementById('priceTooltipOverlay').addEventListener('click',function(e){
+  if(e.target===this) closePriceTooltip();
+});
+
 /* ===== INIT ===== */
 applyConfig();
 renderPriceScale();
@@ -1296,6 +1449,7 @@ initCarousels();
 initFilters();
 initPaintLinks();
 initBackTop();
+initPriceToggle();
 requestAnimationFrame(function(){requestAnimationFrame(function(){initReveal()})});
 
 })();

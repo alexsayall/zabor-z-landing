@@ -395,6 +395,29 @@ models: [
     drawings: ['img/r-lite-draw2.jpg', 'img/rancho-draw.jpg', 'img/r-lite-draw1.jpg']
   },
 
+  {
+    id: 'r-eko', type: 'ranch',
+    name: 'Ранчо Эко',
+    typeName: 'Штакетник стилизованный под Ранчо',
+    price: 2390,
+    badge: '',
+    segment: 'economy',
+    desc: 'Самый доступный вариант «Ранчо-образных» заборов. Стилизованный штакетник в горизонтальном исполнении с регулируемым зазором.',
+    descFull: 'Классическая «П» образная форма планки штакетника с прямым резом имитирует ламель «доску» забора Ранчо. Элегантный внешний вид по самой доступной цене.',
+    steels: ['0.5'],
+    paints: ['Полиэстер глянец', 'Полиэстер бархат', 'Под дерево'],
+    specs: {
+      life:    { val: 38, text: '10 лет' },
+      uv:      { val: 50, text: '50%' },
+      dent:    { val: 35, text: '35%' },
+      scratch: { val: 42, text: '42%' },
+      warranty:{ val: 22, text: '2 года' }
+    },
+    valueScale: 10,
+    photos: [],
+    drawings: []
+  },
+
   /* ─── ПРОФЛИСТ (2 модели) ─── */
   {
     id: 'pf-h', type: 'proflist',
@@ -699,10 +722,10 @@ texts: {
  *  count: Число в плашке (число или пустая строка '')
  * ══════════════════════════════════════════════════════════ */
 filters: [
-  { key: 'all',        name: 'Все',          count: '17+' },
+  { key: 'all',        name: 'Все',          count: '18+' },
   { key: 'z',          name: 'Z-образные',   count: 5 },
   { key: 'v',          name: 'V-образные',   count: 5 },
-  { key: 'ranch',      name: 'Ранчо',        count: 3 },
+  { key: 'ranch',      name: 'Ранчо',        count: 4 },
   { key: 'proflist',   name: 'Профлист',     count: 2 },
   { key: 'shtaketnik', name: 'Штакетник',    count: 2 },
   { key: 'other',      name: 'Прочее',       count: '' }
