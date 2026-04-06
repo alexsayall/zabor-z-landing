@@ -1118,6 +1118,9 @@ function initFilters(){
         if(f==='all'||sec.dataset.type===f){sec.classList.remove('filtered-out')}
         else{sec.classList.add('filtered-out')}
       });
+      /* Scroll to first visible model */
+      var first=document.querySelector('.model-section:not(.filtered-out)');
+      if(first) first.scrollIntoView({behavior:'smooth',block:'start'});
     });
   });
 }
