@@ -414,8 +414,8 @@ models: [
       warranty:{ val: 22, text: '2 года' }
     },
     valueScale: 10,
-    photos: [],
-    drawings: []
+    photos: ['img/r-eco-1.jpg', 'img/r-eco-2.jpg', 'img/r-eco-3.jpg', 'img/r-eco-4.jpg', 'img/r-eco-5.jpg'],
+    drawings: ['img/sh-draw1.jpg']
   },
 
   /* ─── ПРОФЛИСТ (2 модели) ─── */
